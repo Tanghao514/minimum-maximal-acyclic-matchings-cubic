@@ -214,8 +214,9 @@ single-threaded solver calls; benchmark date 19 August 2026.
 python scripts/verify_hashes.py
 ```
 
-Publication snapshot commit: recorded in the `jco-submission-v1` Git tag after
-the initial GitHub publication. No paper or repository DOI is claimed.
+Publication snapshot commit:
+`e48b90d21fc9dc28d94bc0e2410fe220bba6feda`. The release is also marked by
+the `jco-submission-v1` tag. No paper or repository DOI is claimed.
 
 ## Citation
 
@@ -231,4 +232,3 @@ used. Do not invent a DOI.
 - Manuscript PDF and LaTeX source: retained rights and future publisher terms,
   see [paper/RIGHTS.md](paper/RIGHTS.md).
 - Third-party software is excluded and remains under its own license.
-
