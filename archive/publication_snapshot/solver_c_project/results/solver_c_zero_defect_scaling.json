@@ -1,0 +1,222 @@
+[
+  {
+    "n": 16,
+    "m": 24,
+    "mu": 3,
+    "runtime_seconds": 0.0012989950000701356,
+    "recursion_nodes": 4,
+    "zero_defect_nodes": 4,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 26,
+    "m": 39,
+    "mu": 5,
+    "runtime_seconds": 0.001766589999988355,
+    "recursion_nodes": 10,
+    "zero_defect_nodes": 10,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 36,
+    "m": 54,
+    "mu": 7,
+    "runtime_seconds": 0.004870892999861098,
+    "recursion_nodes": 13,
+    "zero_defect_nodes": 13,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 46,
+    "m": 69,
+    "mu": 9,
+    "runtime_seconds": 0.05229290299985223,
+    "recursion_nodes": 19,
+    "zero_defect_nodes": 19,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 56,
+    "m": 84,
+    "mu": 11,
+    "runtime_seconds": 0.009089274999951158,
+    "recursion_nodes": 21,
+    "zero_defect_nodes": 21,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 66,
+    "m": 99,
+    "mu": 13,
+    "runtime_seconds": 0.008224958000027982,
+    "recursion_nodes": 24,
+    "zero_defect_nodes": 24,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 76,
+    "m": 114,
+    "mu": 15,
+    "runtime_seconds": 0.01108564900005149,
+    "recursion_nodes": 26,
+    "zero_defect_nodes": 26,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 86,
+    "m": 129,
+    "mu": 17,
+    "runtime_seconds": 0.013693923000118957,
+    "recursion_nodes": 33,
+    "zero_defect_nodes": 33,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 96,
+    "m": 144,
+    "mu": 19,
+    "runtime_seconds": 0.016923021000366134,
+    "recursion_nodes": 40,
+    "zero_defect_nodes": 40,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 106,
+    "m": 159,
+    "mu": 21,
+    "runtime_seconds": 0.020387550999657833,
+    "recursion_nodes": 51,
+    "zero_defect_nodes": 51,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 116,
+    "m": 174,
+    "mu": 23,
+    "runtime_seconds": 0.02497473199991873,
+    "recursion_nodes": 70,
+    "zero_defect_nodes": 70,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 126,
+    "m": 189,
+    "mu": 25,
+    "runtime_seconds": 0.02889752300006876,
+    "recursion_nodes": 96,
+    "zero_defect_nodes": 96,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 136,
+    "m": 204,
+    "mu": 27,
+    "runtime_seconds": 0.03194793600005141,
+    "recursion_nodes": 127,
+    "zero_defect_nodes": 127,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 146,
+    "m": 219,
+    "mu": 29,
+    "runtime_seconds": 0.037142290999781835,
+    "recursion_nodes": 163,
+    "zero_defect_nodes": 163,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 156,
+    "m": 234,
+    "mu": 31,
+    "runtime_seconds": 0.041877423000187264,
+    "recursion_nodes": 207,
+    "zero_defect_nodes": 207,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 166,
+    "m": 249,
+    "mu": 33,
+    "runtime_seconds": 0.05013637199999721,
+    "recursion_nodes": 257,
+    "zero_defect_nodes": 257,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 176,
+    "m": 264,
+    "mu": 35,
+    "runtime_seconds": 0.06067588699988846,
+    "recursion_nodes": 313,
+    "zero_defect_nodes": 313,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 186,
+    "m": 279,
+    "mu": 37,
+    "runtime_seconds": 0.06906875500044407,
+    "recursion_nodes": 388,
+    "zero_defect_nodes": 388,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 196,
+    "m": 294,
+    "mu": 39,
+    "runtime_seconds": 0.091144919999806,
+    "recursion_nodes": 501,
+    "zero_defect_nodes": 501,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 246,
+    "m": 369,
+    "mu": 49,
+    "runtime_seconds": 0.20903874400028144,
+    "recursion_nodes": 1709,
+    "zero_defect_nodes": 1709,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 296,
+    "m": 444,
+    "mu": 59,
+    "runtime_seconds": 0.5341376530000161,
+    "recursion_nodes": 4891,
+    "zero_defect_nodes": 4891,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  },
+  {
+    "n": 396,
+    "m": 594,
+    "mu": 79,
+    "runtime_seconds": 4.583023394000065,
+    "recursion_nodes": 40240,
+    "zero_defect_nodes": 40240,
+    "greedy_upper_bound": null,
+    "search_mode": "zero-defect-domination"
+  }
+]

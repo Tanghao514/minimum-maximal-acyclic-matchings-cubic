@@ -1,0 +1,8 @@
+verification_item,availability,artifact
+Independent graph generators,MISSING,See MISSING_FOR_RELEASE.md
+Solver A versus Solver B,CODE_AND_TESTS,src/exact_solver.py; tests/
+Independent endpoint-set optimum audit,MISSING,See MISSING_FOR_RELEASE.md
+Lower-cardinality exclusion,PARTIAL,scripts/verify_counterexamples.py
+Solver C interaction audit,CODE,scripts/publication/audit_solver_c.py
+Solver B versus Solver C,COMPLETE,results/per_graph/full_census.csv
+Publication package test suite,COMPLETE,tests/ (12 tests)

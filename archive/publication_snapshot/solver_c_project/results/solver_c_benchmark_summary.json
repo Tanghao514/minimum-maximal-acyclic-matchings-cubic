@@ -1,0 +1,31 @@
+{
+  "cases": 31,
+  "all_median_speedup": 3.3102177521742444,
+  "families": {
+    "counterexample": {
+      "cases": 4,
+      "median_speedup": 5.233728167470679,
+      "min_speedup": 3.680499745149897,
+      "max_speedup": 8.923027296321676
+    },
+    "equality": {
+      "cases": 9,
+      "median_speedup": 5.035196463463001,
+      "min_speedup": 0.1241847874151754,
+      "max_speedup": 18.751738990613475
+    },
+    "random": {
+      "cases": 12,
+      "median_speedup": 3.2255888337632035,
+      "min_speedup": 0.95447811679734,
+      "max_speedup": 6.5759330414935455
+    },
+    "standard": {
+      "cases": 6,
+      "median_speedup": 0.8684230083498923,
+      "min_speedup": 0.23951650790685244,
+      "max_speedup": 1.0256010504402417
+    }
+  },
+  "all_results_equal": true
+}

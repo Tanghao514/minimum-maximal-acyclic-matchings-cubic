@@ -1,0 +1,173 @@
+{
+  "graphs": [
+    {
+      "paper_id": 4055,
+      "checks": {
+        "cubic": true,
+        "connected": true,
+        "simple": true,
+        "matching": true,
+        "acyclic": true,
+        "maximal": true,
+        "no_size_0_1_2_solution": true,
+        "optimum_is_3": true,
+        "diameter": true,
+        "bridges": true,
+        "triangles": true,
+        "four_cycles": true,
+        "isomorphic_to_geng_record": true
+      },
+      "structure": {
+        "n": 16,
+        "k": 3,
+        "s_size": 6,
+        "u_size": 10,
+        "f_components": 3,
+        "h_tree_components": 1,
+        "h_cycle_components": 2,
+        "h_component_types": [
+          "C3",
+          "C3",
+          "P4"
+        ],
+        "e_f": 3,
+        "e_h": 9,
+        "e_su": 12,
+        "identity_u_rhs": 10,
+        "identity_n_rhs": 16,
+        "incidence_edges_distinct": 5,
+        "max_tree_component_f_neighbors": 3,
+        "bound_c_le_2t_plus_1": true,
+        "parity_upper_bound_n": 16,
+        "universal_lower_bound": 3
+      }
+    },
+    {
+      "paper_id": 4056,
+      "checks": {
+        "cubic": true,
+        "connected": true,
+        "simple": true,
+        "matching": true,
+        "acyclic": true,
+        "maximal": true,
+        "no_size_0_1_2_solution": true,
+        "optimum_is_3": true,
+        "diameter": true,
+        "bridges": true,
+        "triangles": true,
+        "four_cycles": true,
+        "isomorphic_to_geng_record": true
+      },
+      "structure": {
+        "n": 16,
+        "k": 3,
+        "s_size": 6,
+        "u_size": 10,
+        "f_components": 3,
+        "h_tree_components": 1,
+        "h_cycle_components": 2,
+        "h_component_types": [
+          "C3",
+          "C3",
+          "P4"
+        ],
+        "e_f": 3,
+        "e_h": 9,
+        "e_su": 12,
+        "identity_u_rhs": 10,
+        "identity_n_rhs": 16,
+        "incidence_edges_distinct": 5,
+        "max_tree_component_f_neighbors": 3,
+        "bound_c_le_2t_plus_1": true,
+        "parity_upper_bound_n": 16,
+        "universal_lower_bound": 3
+      }
+    },
+    {
+      "paper_id": 4058,
+      "checks": {
+        "cubic": true,
+        "connected": true,
+        "simple": true,
+        "matching": true,
+        "acyclic": true,
+        "maximal": true,
+        "no_size_0_1_2_solution": true,
+        "optimum_is_3": true,
+        "diameter": true,
+        "bridges": true,
+        "triangles": true,
+        "four_cycles": true,
+        "isomorphic_to_geng_record": true
+      },
+      "structure": {
+        "n": 16,
+        "k": 3,
+        "s_size": 6,
+        "u_size": 10,
+        "f_components": 3,
+        "h_tree_components": 1,
+        "h_cycle_components": 2,
+        "h_component_types": [
+          "C3",
+          "C3",
+          "P4"
+        ],
+        "e_f": 3,
+        "e_h": 9,
+        "e_su": 12,
+        "identity_u_rhs": 10,
+        "identity_n_rhs": 16,
+        "incidence_edges_distinct": 5,
+        "max_tree_component_f_neighbors": 3,
+        "bound_c_le_2t_plus_1": true,
+        "parity_upper_bound_n": 16,
+        "universal_lower_bound": 3
+      }
+    },
+    {
+      "paper_id": 4059,
+      "checks": {
+        "cubic": true,
+        "connected": true,
+        "simple": true,
+        "matching": true,
+        "acyclic": true,
+        "maximal": true,
+        "no_size_0_1_2_solution": true,
+        "optimum_is_3": true,
+        "diameter": true,
+        "bridges": true,
+        "triangles": true,
+        "four_cycles": true,
+        "isomorphic_to_geng_record": true
+      },
+      "structure": {
+        "n": 16,
+        "k": 3,
+        "s_size": 6,
+        "u_size": 10,
+        "f_components": 3,
+        "h_tree_components": 1,
+        "h_cycle_components": 3,
+        "h_component_types": [
+          "C3",
+          "C3",
+          "C3",
+          "P1"
+        ],
+        "e_f": 3,
+        "e_h": 9,
+        "e_su": 12,
+        "identity_u_rhs": 10,
+        "identity_n_rhs": 16,
+        "incidence_edges_distinct": 6,
+        "max_tree_component_f_neighbors": 3,
+        "bound_c_le_2t_plus_1": true,
+        "parity_upper_bound_n": 16,
+        "universal_lower_bound": 3
+      }
+    }
+  ]
+}

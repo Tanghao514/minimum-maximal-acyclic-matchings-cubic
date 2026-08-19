@@ -1,0 +1,36 @@
+{
+  "exhaustive_interaction_equivalence": {
+    "K4": {
+      "subsets": 22,
+      "matchings": 10,
+      "acyclic": 7,
+      "maximal_acyclic": 6
+    },
+    "K33": {
+      "subsets": 130,
+      "matchings": 34,
+      "acyclic": 10,
+      "maximal_acyclic": 9
+    },
+    "cube": {
+      "subsets": 794,
+      "matchings": 108,
+      "acyclic": 43,
+      "maximal_acyclic": 30
+    },
+    "Petersen": {
+      "subsets": 4944,
+      "matchings": 332,
+      "acyclic": 156,
+      "maximal_acyclic": 65
+    },
+    "prism10": {
+      "subsets": 4944,
+      "matchings": 342,
+      "acyclic": 141,
+      "maximal_acyclic": 60
+    }
+  },
+  "random_solver_b_c_crosschecks": 120,
+  "discrepancies": 0
+}

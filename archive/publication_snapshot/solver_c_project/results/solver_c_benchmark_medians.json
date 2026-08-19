@@ -1,0 +1,26 @@
+{
+  "cases": 16,
+  "repeats": 3,
+  "all_median_speedup": 5.318736372109321,
+  "families": {
+    "counterexample": {
+      "cases": 4,
+      "median_speedup": 5.490200764984288,
+      "min_speedup": 5.262070127359601,
+      "max_speedup": 5.854807996280165
+    },
+    "equality": {
+      "cases": 7,
+      "median_speedup": 9.99165001244966,
+      "min_speedup": 3.532919412346182,
+      "max_speedup": 246.87610840604492
+    },
+    "random": {
+      "cases": 5,
+      "median_speedup": 4.299178031916884,
+      "min_speedup": 2.2424323081526123,
+      "max_speedup": 5.634570773285547
+    }
+  },
+  "all_results_equal": true
+}

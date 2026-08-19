@@ -1,0 +1,55 @@
+{
+  "description": "The four order-16 counterexamples in manuscript Tables 3 and 4.",
+  "id_note": "paper_id is the GENREG/labelg identifier used by the manuscript. geng_census_id is the zero-based input-order identifier in this repository's independently generated nauty geng census. The graph6 labels differ, but each recorded pair is isomorphic.",
+  "graphs": [
+    {
+      "paper_id": 4055,
+      "graph6": "O^o?GGB?w????B@@`@??X",
+      "optimum": 3,
+      "optimal_matching": [[10, 12], [0, 4], [5, 6]],
+      "diameter": 9,
+      "bridges": 2,
+      "triangles": 6,
+      "c4_count": 7,
+      "geng_census_id": "n16_3449",
+      "geng_census_graph6": "O??CA?oB@`U?o_Oo@g?W_"
+    },
+    {
+      "paper_id": 4056,
+      "graph6": "O^o?GGB?w??@?A@@`@??L",
+      "optimum": 3,
+      "optimal_matching": [[0, 4], [5, 6], [10, 11]],
+      "diameter": 9,
+      "bridges": 2,
+      "triangles": 4,
+      "c4_count": 11,
+      "geng_census_id": "n16_0708",
+      "geng_census_graph6": "O???C@_cSaB_B_B_KOB@?"
+    },
+    {
+      "paper_id": 4058,
+      "graph6": "O^o?GGB?w??@?B@?`@??J",
+      "optimum": 3,
+      "optimal_matching": [[0, 4], [5, 6], [11, 15]],
+      "diameter": 8,
+      "bridges": 2,
+      "triangles": 5,
+      "c4_count": 8,
+      "geng_census_id": "n16_1218",
+      "geng_census_graph6": "O???E?oBEA[?CgK_@o?W_"
+    },
+    {
+      "paper_id": 4059,
+      "graph6": "O^o?GGB?wW?@?@?@??W?F",
+      "optimum": 3,
+      "optimal_matching": [[0, 4], [5, 6], [11, 12]],
+      "diameter": 6,
+      "bridges": 3,
+      "triangles": 6,
+      "c4_count": 9,
+      "geng_census_id": "n16_1219",
+      "geng_census_graph6": "O???E?oBEAWOKGK_@o?W_"
+    }
+  ]
+}
+

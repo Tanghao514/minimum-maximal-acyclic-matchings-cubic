@@ -1,0 +1,10 @@
+n,construction,expected_equality_value,solver_b_status,solver_c_status,solver_b_solved_repetitions,solver_c_solved_repetitions,repetitions,timeout_seconds,mu_solver_b,mu_solver_c,runtime_solver_b,runtime_solver_c,speedup,search_nodes_solver_b,search_nodes_solver_c,solver_c_recursion_nodes
+16,chain_extremal,3,solved,solved,3,3,3,300,3,3,0.014285600000221166,0.005247600000075181,2.7223111517677605,582,1,4
+20,chain_extremal,4,solved,solved,3,3,3,300,4,4,0.0965477000008832,0.0242404999989958,3.982908768584923,5123,251,704
+24,chain_extremal,5,solved,solved,3,3,3,300,5,5,0.8888260999992781,0.15151960000002873,5.866080031884387,39220,1116,4940
+26,chain_extremal,5,solved,solved,3,3,3,300,5,5,1.5255106999993586,0.009998699999414384,152.57090422642008,68527,1,10
+28,chain_extremal,6,solved,solved,3,3,3,300,6,6,8.468210300001374,0.9622911999995267,8.80004961076807,320236,5705,35161
+32,chain_extremal,7,solved,solved,1,1,1,300,7,7,89.2175642000002,6.441137199999503,13.851213136712426,2567353,32797,263711
+36,chain_extremal,7,solved,solved,1,1,1,300,7,7,290.5094274999992,0.017196000000694767,16894.011833464865,7971774,1,13
+46,chain_extremal,9,timeout,solved,0,1,1,300,,9,,0.02143860000069253,,,1,19
+56,chain_extremal,11,timeout,solved,0,1,1,300,,11,,0.02971090000028198,,,1,21

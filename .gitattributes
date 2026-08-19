@@ -1,0 +1,4 @@
+# Preserve byte-for-byte publication artifacts and SHA-256 reproducibility.
+# File extensions still allow GitHub to render text normally.
+* -text
+

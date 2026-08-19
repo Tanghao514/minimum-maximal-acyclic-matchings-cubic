@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\caption{Paired full-census comparison on all connected simple cubic graphs through order 16. Times are medians of whole-layer repetitions (five for $n\leq 12$, three otherwise). Node counts are complete candidates examined.}
+\label{tab:solver-bc-census}
+\small
+\begin{tabular}{rrrrrrrrr}
+\toprule
+$n$ & graphs & B time (s) & C time (s) & speedup & B nodes & C nodes & reduction & disc. \\
+\midrule
+4  & 1    & 0.0008 & 0.0010 & 0.88 & 2         & 1      & 50.00\% & 0 \\
+6  & 2    & 0.0053 & 0.0040 & 1.33 & 5         & 2      & 60.00\% & 0 \\
+8  & 5    & 0.0127 & 0.0126 & 1.01 & 70        & 5      & 92.86\% & 0 \\
+10 & 19   & 0.0839 & 0.0896 & 0.94 & 989       & 358    & 63.80\% & 0 \\
+12 & 85   & 0.4467 & 0.3775 & 1.18 & 11,151    & 179    & 98.39\% & 0 \\
+14 & 509  & 5.9727 & 4.8901 & 1.22 & 224,027   & 43,691 & 80.50\% & 0 \\
+16 & 4,060& 94.1762& 32.4600& 2.90 & 4,832,310 & 40,158 & 99.17\% & 0 \\
+\midrule
+All & 4,681 & 100.6984 & 37.8348 & 2.66 & 5,068,554 & 84,394 & 98.34\% & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}

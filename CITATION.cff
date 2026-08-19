@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software or its data, please cite the accompanying manuscript."
+title: "Minimum Maximal Acyclic Matchings in Connected Cubic Graphs: Exhaustive Enumeration and a Sharp Bound"
+type: software
+authors:
+  - family-names: Tang
+    given-names: Hao
+    affiliation: "College of Software, Jilin University"
+repository-code: "https://github.com/Tanghao514/minimum-maximal-acyclic-matchings-cubic"
+version: "1.0.0-jco-submission"
+date-released: 2026-08-19
+keywords:
+  - acyclic matching
+  - cubic graph
+  - exhaustive enumeration
+  - exact algorithm
+  - graph6
+

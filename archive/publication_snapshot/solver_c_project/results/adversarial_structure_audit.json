@@ -1,0 +1,367 @@
+{
+  "seed": 20260816,
+  "status": "PASS: no counterexample to any audited structural lemma",
+  "totals": {
+    "extension_edges_checked": 187020,
+    "graphs": 47,
+    "matchings": 83048,
+    "acyclic_matchings": 29883,
+    "maximal_acyclic_matchings": 9753
+  },
+  "H_component_type_counts": {
+    "C3": 361,
+    "C4": 143,
+    "C5": 40,
+    "C6": 49,
+    "C7": 14,
+    "C8": 11,
+    "K1,3": 189,
+    "P1": 12520,
+    "P2": 6194,
+    "P3": 3682,
+    "P4": 2073,
+    "P5": 934,
+    "P6": 377,
+    "P7": 37,
+    "P8": 178
+  },
+  "maximal_matching_size_counts": {
+    "1": 24,
+    "2": 334,
+    "3": 1774,
+    "4": 4250,
+    "5": 3371
+  },
+  "graphs": [
+    {
+      "name": "K4",
+      "n": 4,
+      "matchings": 10,
+      "acyclic_matchings": 7,
+      "maximal_acyclic_matchings": 6
+    },
+    {
+      "name": "K33",
+      "n": 6,
+      "matchings": 34,
+      "acyclic_matchings": 10,
+      "maximal_acyclic_matchings": 9
+    },
+    {
+      "name": "triangular_prism",
+      "n": 6,
+      "matchings": 32,
+      "acyclic_matchings": 16,
+      "maximal_acyclic_matchings": 9
+    },
+    {
+      "name": "cube",
+      "n": 8,
+      "matchings": 108,
+      "acyclic_matchings": 43,
+      "maximal_acyclic_matchings": 30
+    },
+    {
+      "name": "petersen",
+      "n": 10,
+      "matchings": 332,
+      "acyclic_matchings": 156,
+      "maximal_acyclic_matchings": 65
+    },
+    {
+      "name": "pentagonal_prism",
+      "n": 10,
+      "matchings": 342,
+      "acyclic_matchings": 141,
+      "maximal_acyclic_matchings": 60
+    },
+    {
+      "name": "hexagonal_prism",
+      "n": 12,
+      "matchings": 1104,
+      "acyclic_matchings": 372,
+      "maximal_acyclic_matchings": 140
+    },
+    {
+      "name": "heawood",
+      "n": 14,
+      "matchings": 3462,
+      "acyclic_matchings": 1366,
+      "maximal_acyclic_matchings": 588
+    },
+    {
+      "name": "moebius_k4",
+      "n": 4,
+      "matchings": 10,
+      "acyclic_matchings": 7,
+      "maximal_acyclic_matchings": 6
+    },
+    {
+      "name": "random_cubic_8_0",
+      "n": 8,
+      "matchings": 102,
+      "acyclic_matchings": 45,
+      "maximal_acyclic_matchings": 32
+    },
+    {
+      "name": "random_cubic_8_1",
+      "n": 8,
+      "matchings": 106,
+      "acyclic_matchings": 47,
+      "maximal_acyclic_matchings": 34
+    },
+    {
+      "name": "random_cubic_8_2",
+      "n": 8,
+      "matchings": 100,
+      "acyclic_matchings": 47,
+      "maximal_acyclic_matchings": 34
+    },
+    {
+      "name": "random_cubic_8_3",
+      "n": 8,
+      "matchings": 102,
+      "acyclic_matchings": 45,
+      "maximal_acyclic_matchings": 32
+    },
+    {
+      "name": "random_cubic_8_4",
+      "n": 8,
+      "matchings": 100,
+      "acyclic_matchings": 47,
+      "maximal_acyclic_matchings": 34
+    },
+    {
+      "name": "random_cubic_8_5",
+      "n": 8,
+      "matchings": 102,
+      "acyclic_matchings": 45,
+      "maximal_acyclic_matchings": 32
+    },
+    {
+      "name": "random_cubic_8_6",
+      "n": 8,
+      "matchings": 104,
+      "acyclic_matchings": 46,
+      "maximal_acyclic_matchings": 33
+    },
+    {
+      "name": "random_cubic_8_7",
+      "n": 8,
+      "matchings": 108,
+      "acyclic_matchings": 43,
+      "maximal_acyclic_matchings": 30
+    },
+    {
+      "name": "random_cubic_10_0",
+      "n": 10,
+      "matchings": 326,
+      "acyclic_matchings": 142,
+      "maximal_acyclic_matchings": 63
+    },
+    {
+      "name": "random_cubic_10_1",
+      "n": 10,
+      "matchings": 334,
+      "acyclic_matchings": 148,
+      "maximal_acyclic_matchings": 66
+    },
+    {
+      "name": "random_cubic_10_2",
+      "n": 10,
+      "matchings": 324,
+      "acyclic_matchings": 139,
+      "maximal_acyclic_matchings": 62
+    },
+    {
+      "name": "random_cubic_10_3",
+      "n": 10,
+      "matchings": 332,
+      "acyclic_matchings": 150,
+      "maximal_acyclic_matchings": 70
+    },
+    {
+      "name": "random_cubic_10_4",
+      "n": 10,
+      "matchings": 326,
+      "acyclic_matchings": 142,
+      "maximal_acyclic_matchings": 63
+    },
+    {
+      "name": "random_cubic_10_5",
+      "n": 10,
+      "matchings": 332,
+      "acyclic_matchings": 150,
+      "maximal_acyclic_matchings": 70
+    },
+    {
+      "name": "random_cubic_10_6",
+      "n": 10,
+      "matchings": 338,
+      "acyclic_matchings": 145,
+      "maximal_acyclic_matchings": 66
+    },
+    {
+      "name": "random_cubic_10_7",
+      "n": 10,
+      "matchings": 338,
+      "acyclic_matchings": 145,
+      "maximal_acyclic_matchings": 66
+    },
+    {
+      "name": "random_cubic_10_8",
+      "n": 10,
+      "matchings": 332,
+      "acyclic_matchings": 150,
+      "maximal_acyclic_matchings": 70
+    },
+    {
+      "name": "random_cubic_10_9",
+      "n": 10,
+      "matchings": 336,
+      "acyclic_matchings": 148,
+      "maximal_acyclic_matchings": 67
+    },
+    {
+      "name": "random_cubic_12_0",
+      "n": 12,
+      "matchings": 1056,
+      "acyclic_matchings": 370,
+      "maximal_acyclic_matchings": 166
+    },
+    {
+      "name": "random_cubic_12_1",
+      "n": 12,
+      "matchings": 1042,
+      "acyclic_matchings": 433,
+      "maximal_acyclic_matchings": 154
+    },
+    {
+      "name": "random_cubic_12_2",
+      "n": 12,
+      "matchings": 1038,
+      "acyclic_matchings": 502,
+      "maximal_acyclic_matchings": 162
+    },
+    {
+      "name": "random_cubic_12_3",
+      "n": 12,
+      "matchings": 1050,
+      "acyclic_matchings": 388,
+      "maximal_acyclic_matchings": 150
+    },
+    {
+      "name": "random_cubic_12_4",
+      "n": 12,
+      "matchings": 1072,
+      "acyclic_matchings": 351,
+      "maximal_acyclic_matchings": 145
+    },
+    {
+      "name": "random_cubic_12_5",
+      "n": 12,
+      "matchings": 1064,
+      "acyclic_matchings": 270,
+      "maximal_acyclic_matchings": 152
+    },
+    {
+      "name": "random_cubic_12_6",
+      "n": 12,
+      "matchings": 1062,
+      "acyclic_matchings": 420,
+      "maximal_acyclic_matchings": 149
+    },
+    {
+      "name": "random_cubic_12_7",
+      "n": 12,
+      "matchings": 1026,
+      "acyclic_matchings": 421,
+      "maximal_acyclic_matchings": 138
+    },
+    {
+      "name": "random_cubic_12_8",
+      "n": 12,
+      "matchings": 1026,
+      "acyclic_matchings": 421,
+      "maximal_acyclic_matchings": 138
+    },
+    {
+      "name": "random_cubic_12_9",
+      "n": 12,
+      "matchings": 1070,
+      "acyclic_matchings": 412,
+      "maximal_acyclic_matchings": 138
+    },
+    {
+      "name": "random_cubic_14_0",
+      "n": 14,
+      "matchings": 3332,
+      "acyclic_matchings": 1290,
+      "maximal_acyclic_matchings": 442
+    },
+    {
+      "name": "random_cubic_14_1",
+      "n": 14,
+      "matchings": 3390,
+      "acyclic_matchings": 1279,
+      "maximal_acyclic_matchings": 438
+    },
+    {
+      "name": "random_cubic_14_2",
+      "n": 14,
+      "matchings": 3384,
+      "acyclic_matchings": 1351,
+      "maximal_acyclic_matchings": 485
+    },
+    {
+      "name": "random_cubic_14_3",
+      "n": 14,
+      "matchings": 3408,
+      "acyclic_matchings": 1261,
+      "maximal_acyclic_matchings": 479
+    },
+    {
+      "name": "random_cubic_14_4",
+      "n": 14,
+      "matchings": 3288,
+      "acyclic_matchings": 1140,
+      "maximal_acyclic_matchings": 370
+    },
+    {
+      "name": "random_cubic_14_5",
+      "n": 14,
+      "matchings": 3342,
+      "acyclic_matchings": 1197,
+      "maximal_acyclic_matchings": 423
+    },
+    {
+      "name": "random_cubic_16_0",
+      "n": 16,
+      "matchings": 10686,
+      "acyclic_matchings": 3753,
+      "maximal_acyclic_matchings": 977
+    },
+    {
+      "name": "random_cubic_16_1",
+      "n": 16,
+      "matchings": 10754,
+      "acyclic_matchings": 3382,
+      "maximal_acyclic_matchings": 869
+    },
+    {
+      "name": "random_cubic_16_2",
+      "n": 16,
+      "matchings": 10744,
+      "acyclic_matchings": 3554,
+      "maximal_acyclic_matchings": 941
+    },
+    {
+      "name": "random_cubic_16_3",
+      "n": 16,
+      "matchings": 10638,
+      "acyclic_matchings": 3746,
+      "maximal_acyclic_matchings": 1000
+    }
+  ],
+  "independence_note": "The script imports neither src.structure nor the project's maximality predicate; all cycle, maximality, incidence, and counting checks are recomputed directly."
+}

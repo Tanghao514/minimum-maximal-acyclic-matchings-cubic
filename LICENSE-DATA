@@ -1,0 +1,23 @@
+Data and documentation license
+================================
+
+Except for the manuscript files under `paper/` and third-party material
+explicitly identified in this repository, the author-created datasets,
+graph6 collections, computational certificates, result tables, and repository
+documentation are licensed under the Creative Commons Attribution 4.0
+International License (CC BY 4.0).
+
+Copyright (c) 2026 Hao Tang
+
+License summary and legal code:
+https://creativecommons.org/licenses/by/4.0/
+
+Attribution should identify Hao Tang, the repository title, the repository
+URL, and the version or commit used. Changes must be indicated.
+
+The Python source code, scripts, and tests are instead licensed under the MIT
+License in `LICENSE`.
+
+The manuscript PDF and LaTeX source under `paper/` are excluded; see
+`paper/RIGHTS.md`.
+

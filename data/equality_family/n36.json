@@ -1,0 +1,80 @@
+{
+  "checks": {
+    "acyclic": true,
+    "connected": true,
+    "cubic": true,
+    "matching": true,
+    "maximal": true,
+    "sharp_size": true,
+    "simple": true
+  },
+  "construction": {
+    "base_k": 7,
+    "family": "chain_extremal",
+    "formula": "n=5k+1-q",
+    "k": 7,
+    "leaf_excess": 0,
+    "n": 36
+  },
+  "formula_value": 7,
+  "graph6": "c`?IaE@`G??@????___O@A?S?????G?????@??O_?C?_?ODG???G???a???W?O???A??C?C??W??G????G?C??A?B???O????A??_??C?B",
+  "matching": [
+    [
+      0,
+      1
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      10,
+      11
+    ],
+    [
+      12,
+      13
+    ],
+    [
+      17,
+      18
+    ],
+    [
+      19,
+      20
+    ]
+  ],
+  "n": 36,
+  "structural_certificate": {
+    "bound_c_le_2t_plus_1": true,
+    "e_f": 7,
+    "e_h": 19,
+    "e_su": 28,
+    "f_components": 7,
+    "h_component_types": [
+      "C3",
+      "C3",
+      "C3",
+      "C3",
+      "P3",
+      "P3",
+      "P4"
+    ],
+    "h_cycle_components": 4,
+    "h_tree_components": 3,
+    "identity_n_rhs": 36,
+    "identity_u_rhs": 22,
+    "incidence_edges_distinct": 13,
+    "k": 7,
+    "max_tree_component_f_neighbors": 3,
+    "n": 36,
+    "parity_upper_bound_n": 36,
+    "s_size": 14,
+    "u_size": 22,
+    "universal_lower_bound": 7
+  }
+}

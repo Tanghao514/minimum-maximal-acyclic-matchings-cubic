@@ -1,0 +1,1785 @@
+\documentclass[smallextended,natbib,nospthms]{svjour3}
+%% Journal of Combinatorial Optimization: Springer svjour3, option smallextended.
+%% Compile with pdfLaTeX. This folder must contain svjour3.cls and svglov3.clo.
+
+\usepackage[T1]{fontenc}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[utf8]{inputenc}
+\fi
+\usepackage{upquote}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{caption}
+\usepackage{aliascnt}
+
+% cleveref needs a dummy chapter list under svjour3
+\makeatletter
+\def\cl@chapter{}
+\makeatother
+\usepackage{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\emergencystretch=1.5em
+\smartqed
+
+% Make algorithmic line anchors unique across the three algorithms.
+\makeatletter
+\providecommand{\theHALG@line}{}
+\renewcommand{\theHALG@line}{\thealgorithm.\arabic{ALG@line}}
+\makeatother
+
+\hypersetup{
+  colorlinks=true,
+  allcolors=black,
+  pdftitle={Minimum Maximal Acyclic Matchings in Connected Cubic Graphs},
+  pdfauthor={Hao Tang}
+}
+
+% Environments share the theorem counter through aliascnt so that cleveref
+% reports "Lemma 4.2" instead of "Theorem 4.2".
+\newtheorem{theorem}{Theorem}[section]
+
+\newaliascnt{lemma}{theorem}
+\newtheorem{lemma}[lemma]{Lemma}
+\aliascntresetthe{lemma}
+
+\newaliascnt{proposition}{theorem}
+\newtheorem{proposition}[proposition]{Proposition}
+\aliascntresetthe{proposition}
+
+\newaliascnt{corollary}{theorem}
+\newtheorem{corollary}[corollary]{Corollary}
+\aliascntresetthe{corollary}
+
+\theoremstyle{definition}
+\newaliascnt{definition}{theorem}
+\newtheorem{definition}[definition]{Definition}
+\aliascntresetthe{definition}
+
+\theoremstyle{remark}
+\newaliascnt{remark}{theorem}
+\newtheorem{remark}[remark]{Remark}
+\aliascntresetthe{remark}
+
+\crefname{theorem}{Theorem}{Theorems}
+\Crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
+\Crefname{lemma}{Lemma}{Lemmas}
+\crefname{proposition}{Proposition}{Propositions}
+\Crefname{proposition}{Proposition}{Propositions}
+\crefname{corollary}{Corollary}{Corollaries}
+\Crefname{corollary}{Corollary}{Corollaries}
+\crefname{definition}{Definition}{Definitions}
+\Crefname{definition}{Definition}{Definitions}
+\crefname{remark}{Remark}{Remarks}
+\Crefname{remark}{Remark}{Remarks}
+
+\newcommand{\acnum}{\mu'_{\mathrm{ac}}}
+\newcommand{\maxacnum}{\nu_{\mathrm{ac}}}
+\newcommand{\LowAcy}{\textnormal{\textsc{Low-Acy-Matching}}}
+\newcommand{\ceil}[1]{\left\lceil #1\right\rceil}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\bigO}{\mathcal{O}}
+\DeclareMathOperator{\Forest}{Forest}
+\DeclareMathOperator{\popcount}{popcount}
+
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
+
+\tikzset{
+  vertex/.style={circle,draw,fill=white,inner sep=0pt,minimum size=5.2mm,font=\scriptsize},
+  fcomp/.style={rectangle,draw,align=center,minimum width=14mm,minimum height=8mm,font=\scriptsize},
+  htree/.style={circle,draw,align=center,minimum size=11mm,font=\scriptsize},
+  hcycle/.style={regular polygon,regular polygon sides=3,draw,align=center,
+                 minimum size=12mm,font=\scriptsize}
+}
+
+\journalname{Journal of Combinatorial Optimization}
+
+\begin{document}
+
+\title{Minimum Maximal Acyclic Matchings in Connected Cubic Graphs:
+Exhaustive Enumeration and a Sharp Bound}
+\titlerunning{Minimum maximal acyclic matchings in cubic graphs}
+\author{Hao Tang}
+\authorrunning{H. Tang}
+\institute{H.~Tang \at
+College of Software, Jilin University, Changchun 130012, China \\
+\email{tanghao5524@mails.jlu.edu.cn}}
+\date{Received: date / Accepted: date}
+
+\maketitle
+
+\begin{abstract}
+An acyclic matching is a matching whose endpoints induce a forest.
+Given a graph $G$, the problem \LowAcy{} asks for an inclusion-wise maximal
+acyclic matching of minimum cardinality; we write $\acnum(G)$ for this
+optimum. The decision version is NP-complete on general graphs. We determine
+the exact extremal value of $\acnum$ over connected simple cubic graphs.
+
+F\"urst and Rautenbach proved that the maximum acyclic matching number
+satisfies $\maxacnum(G)\geq n/4$ on connected cubic graphs other than
+$K_{3,3}$. The corresponding $\floor{n/4}$ benchmark holds for $\acnum$
+through order 14, but fails at order 16: four of $4060$ non-isomorphic graphs
+have $\acnum(G)=3$. For a maximal acyclic matching $M$, analysis of the
+unmatched induced subgraph and its incidence with the forest induced by
+$V(M)$ yields $n\leq 5|M|$ when $|M|$ is even and $n\leq 5|M|+1$ when $|M|$
+is odd. Explicit connected cubic constructions attain the bound at every even
+order. Thus, if $f_3(n)$ denotes the minimum of $\acnum(G)$ over connected
+simple cubic graphs of order $n$, then
+$f_3(n)=\ceil{(n-1)/5}$ for every even $n\geq 4$.
+
+Two independent exact solvers, dual regular-graph generators, and an
+endpoint-set audit certify the census through order 16. As a direct counting
+consequence, deciding $\acnum(G)\leq K$ on this class reduces immediately to
+instances with at most $5K+1$ vertices, and is therefore fixed-parameter
+tractable in the solution-size parameter $K$.
+\keywords{Acyclic matching \and Cubic graph \and Extremal graph theory
+\and Exhaustive enumeration \and Parameterized algorithm}
+\end{abstract}
+
+\section{Introduction}
+
+Matching is a fundamental problem in combinatorial optimization and graph
+algorithms. Classical maximum matching is polynomial-time solvable
+\cite{Edmonds1965,LovaszPlummer2009}, whereas the complexity often increases
+sharply when feasibility is defined through an induced-subgraph property or
+when the objective is changed from a maximum feasible solution to a minimum
+maximal one. Let $G$ be a finite simple graph and let $M\subseteq E(G)$ be a
+matching. The matching $M$ is \emph{acyclic} if its endpoints induce a forest
+in $G$. Acyclic matchings were developed systematically within the framework
+of generalized subgraph-restricted matchings \cite{Goddard2005}, and their
+maximum and minimum-maximal variants have since led to distinct algorithmic
+lines of research
+\cite{Chaudhary2024,Chaudhary2025,Furst2019,Panda2023,Zehavi2025}.
+
+This paper studies \LowAcy: among all inclusion-wise maximal acyclic matchings,
+find one of minimum cardinality. Its optimum is denoted by $\acnum(G)$.
+This problem differs from maximum acyclic matching and from ordinary minimum
+maximal matching, which is closely related to edge domination
+\cite{Yannakakis1980}. Induced and uniquely restricted matchings provide
+further nearby reference points \cite{Cameron1989,Golumbic2001}, and the
+minimum-maximal variant of uniquely restricted matching exhibits the same
+min--max pattern studied here \cite{ChaudharyPanda2021}.
+The decision version of \LowAcy{} is NP-complete on general graphs. For
+restricted classes, it remains NP-complete on bipartite graphs of maximum
+degree six and is APX-hard on 4-regular graphs, whereas proper interval graphs
+admit a linear-time algorithm \cite{Chaudhary2024,Chaudhary2025}. These
+results do not settle the per-instance complexity on connected cubic graphs.
+The present paper addresses first a different, extremal question: the minimum
+possible value of $\acnum(G)$ among connected cubic graphs of a fixed order.
+\citet{Chaudhary2024} observed that even a general lower
+bound was missing for fixed $r$-regular graphs with $r\geq 3$. Cubic graphs
+are therefore the first unresolved regular class in which to seek a sharp
+universal bound.
+
+The corresponding question for the \emph{maximum} acyclic matching number
+$\maxacnum$ is settled. \citet{FurstRautenbach2018}
+proved that every subcubic graph without isolated vertices satisfies
+\[
+  \maxacnum(G)\geq
+  \tfrac14\bigl(n-\kappa_G(K_{2,3})-\kappa_G(K_4^{+})-2\kappa_G(K_{3,3})\bigr),
+\]
+where $\kappa_G(H)$ counts the components of $G$ isomorphic to $H$ and
+$K_4^{+}$ arises from $K_4$ by subdividing one edge once. Neither $K_{2,3}$
+nor $K_4^{+}$ is cubic, so the bound specialises to $\maxacnum(G)\geq n/4$ for
+every connected cubic graph other than $K_{3,3}$, and it is tight. Since
+$\acnum(G)\leq\maxacnum(G)$, this inequality points in the wrong direction for
+the minimum-maximal parameter and settles nothing about $\acnum$. It does,
+however, make $\floor{n/4}$ the natural first guess for $f_3(n)$, and our
+census shows that the guess is wrong: the quarter threshold that governs the
+maximum variant on cubic graphs does not govern the minimum-maximal one, whose
+true growth rate is $n/5$.
+
+We follow an exact-computation-to-structure route: discover counterexamples
+computationally, formulate a structural conjecture, and then determine the
+extremal function by an independent proof. We first implement a
+definition-level solver and an optimized bitset solver, and then enumerate
+small non-isomorphic connected cubic graphs. The census through order 14
+happens to satisfy the benchmark $\acnum(G)\geq\floor{n/4}$ inherited from
+$\maxacnum$, but the
+order-16 census refutes it and identifies four smallest counterexamples.
+Their structure shows that the decisive feature is not the local form of the
+matching edges, but how every edge in the subgraph induced by unmatched
+vertices is blocked by connected components of the forest induced by the
+matching endpoints. This observation yields a local characterization, a
+component classification, and an exact cut-edge count.
+
+\subsection{Main results and computational validation}
+
+The contributions are as follows.
+\begin{itemize}[leftmargin=1.5em]
+  \item For every maximal acyclic matching $M$ with $k=|M|$, we prove
+  $n\leq 5k$ when $k$ is even and $n\leq 5k+1$ when $k$ is odd. The split
+  identifies precisely when the one-vertex slack can occur.
+
+  \item Equality constructions are given for every even $n\geq 4$, determining
+  the exact extremal function
+  \[
+    \begin{aligned}
+      f_3(n)
+      &=\min\bigl\{\acnum(G):
+        G\text{ connected simple cubic of order }n\bigr\}\\
+      &=\ceil{\frac{n-1}{5}}.
+    \end{aligned}
+  \]
+
+  \item All non-isomorphic connected simple cubic graphs of orders
+  $n=4,6,\ldots,16$ are evaluated exactly. The complete histogram exposes
+  four of the 4060 order-16 graphs with $\acnum(G)=3<4$ and leads to the sharp
+  theorem. Exactly three of these four are realised by the equality
+  construction of \Cref{sec:constructions}; the fourth is not, so extremal
+  graphs are not confined to a single structural family.
+
+  \item For reproducibility, a definition-level edge-subset solver and a bitset
+  backtracking solver are specified and proved correct. Their results are
+  cross-checked through order 12, while a structurally independent
+  endpoint-set solver certifies every optimum at orders 14 and 16. GENREG and
+  nauty/\texttt{geng} produce identical canonical input censuses.
+
+  \item As a post-theorem consequence, we derive an exact solver that contracts
+  selected matching edges, maintains an edge-interaction forest with rollback
+  union--find, and uses a theorem-derived defect budget. The same counting
+  bound implies that deciding $\acnum(G)\leq K$ is fixed-parameter tractable
+  in $K$ on connected cubic graphs: every yes-instance has at most $5K+1$
+  vertices, so larger instances are immediate no-instances.
+\end{itemize}
+
+The last item is deliberately downstream of the theorem. The new solver uses
+the proved lower bound and therefore is not counted as independent evidence
+for that bound.
+
+\subsection{Organization}
+
+\Cref{sec:definitions} gives the definitions, two theorem-independent exact
+algorithms, and their correctness analyses. \Cref{sec:census} reports the
+non-isomorphic census and counterexample certificates.
+\Cref{sec:blocking} establishes the local blocking structure, and
+\Cref{sec:bound} proves the sharp lower bound. \Cref{sec:constructions} gives
+equality constructions for all even orders. \Cref{sec:solverc} develops the
+post-theorem interaction-forest solver and records the FPT consequence of the
+bound. \Cref{sec:verification} describes independent verification,
+reproducibility, and threats to validity.
+\Cref{sec:discussion,sec:conclusion} discuss open questions and conclude the
+paper. Detailed Solver~C timings, equality-family scaling, and ablations are
+collected in \Cref{app:benchmark}.
+
+\section{Problem definition and exact algorithms}
+\label{sec:definitions}
+
+\subsection{Definitions and decision semantics}
+
+All graphs considered in this paper are finite, undirected, and simple. For
+$X\subseteq V(G)$, let $G[X]$ denote the vertex-induced subgraph of $G$ on
+$X$. For a matching $M$, let $V(M)$ be the set of all endpoints of edges in
+$M$.
+
+\begin{definition}
+A matching $M$ is \emph{acyclic} if $G[V(M)]$ is a forest. It is
+\emph{maximal acyclic} if it is not strictly contained in any larger acyclic
+matching. Define
+\[
+  \acnum(G)=\min\{|M|:M\text{ is a maximal acyclic matching of }G\}.
+\]
+For every even integer $n\geq 4$, define
+\[
+  f_3(n)=
+  \min\{\acnum(G):G\text{ is a connected simple cubic graph of order }n\}.
+\]
+\end{definition}
+
+A common implementation error is to interpret an extension as merely adding a
+new edge $uv$ to $G[V(M)]$. After $uv$ is added to the matching, however, one
+must test the full vertex-induced subgraph
+$G[V(M)\cup\{u,v\}]$, including every edge from $u$ and $v$ to the previous
+matching endpoints. All exact solvers in this work implement this semantics.
+
+\subsection{Solver A: definition-level enumeration}
+
+\begin{algorithm}[t]
+\caption{Solver A: definition-level exact enumeration}
+\label{alg:solver-a}
+\begin{algorithmic}[1]
+\Require A finite simple graph $G=(V,E)$
+\For{$k=0,1,\ldots,|E|$}
+  \ForAll{$k$-edge subsets $M\subseteq E$}
+    \If{$M$ is not a matching}
+      \State \textbf{continue}
+    \EndIf
+    \If{$G[V(M)]$ is not a forest}
+      \State \textbf{continue}
+    \EndIf
+    \State $U\gets V\setminus V(M)$; \quad $\mathit{maximal}\gets\textsc{True}$
+    \ForAll{$uv\in E(G[U])$}
+      \If{$G[V(M)\cup\{u,v\}]$ is a forest}
+        \State $\mathit{maximal}\gets\textsc{False}$; \quad \textbf{break}
+      \EndIf
+    \EndFor
+    \If{$\mathit{maximal}$}
+      \State \Return $(k,M)$
+    \EndIf
+  \EndFor
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+Solver A exhausts every candidate of smaller cardinality before advancing to
+the next cardinality, so the first returned solution is optimal. Deliberately
+avoiding sophisticated pruning, it serves as a definition-level baseline and
+as an independent cross-check. If $m=|E(G)|$, its worst-case running time is
+$\bigO(2^m\operatorname{poly}(n+m))$, so it is suitable only for small graphs.
+
+\begin{proposition}
+\label{prop:solver-a}
+Solver A returns a minimum-cardinality maximal acyclic matching.
+\end{proposition}
+
+\begin{proof}
+The algorithm returns only if $M$ is a matching, $G[V(M)]$ is a forest, and no
+edge $uv\in E(G[V\setminus V(M)])$ extends it while preserving the induced
+forest condition. Thus the returned solution is feasible and maximal. The
+outer loop increases $k$ only after all smaller edge subsets have been checked,
+so no smaller solution exists.
+\end{proof}
+
+\subsection{Solver B: bitset increasing-cardinality search}
+
+Index the edges as $E=(e_0,\ldots,e_{m-1})$ and let $p[i]$ be the bit mask of
+the two endpoints of $e_i$. Solver B searches in increasing target size and
+caches the exact predicate $\Forest(X)$, which tests whether $G[X]$ is a
+forest. For a forest $G[X]$, the cache stores both acyclicity and its component
+count. Cyclicity is monotone under adding vertices to an induced subgraph, so
+a failed forest test safely prunes the entire branch. Two capacity tests are
+also safe: a completion needs at least \textit{need} eligible suffix edges and
+$2\,\textit{need}$ distinct endpoints.
+
+\begin{algorithm}[t]
+\caption{Solver B: bitset- and cache-driven exact search}
+\label{alg:solver-b}
+\begin{algorithmic}[1]
+\Require $G=(V,E)$ with endpoint masks $p[0],\ldots,p[m-1]$
+\Function{Maximal}{$X$}
+  \For{$i=0,\ldots,m-1$}
+    \If{$(p[i]\mathbin{\&}X)=0$ and $\Forest(X\mathbin{|}p[i])$}
+      \State \Return \textsc{False}
+    \EndIf
+  \EndFor
+  \State \Return \textsc{True}
+\EndFunction
+\Function{Search}{$\mathit{start},q,X,L,k$}
+  \If{$q=k$}
+    \State \Return $L$ if \Call{Maximal}{$X$}; otherwise failure
+  \EndIf
+  \State $\mathit{need}\gets k-q$
+  \State $R\gets\{i\geq\mathit{start}:(p[i]\mathbin{\&}X)=0\}$
+  \If{$|R|<\mathit{need}$}
+    \State \Return failure
+  \EndIf
+  \State $Y\gets\bigvee_{i\in R}p[i]$
+  \If{$\popcount(Y)<2\,\mathit{need}$}
+    \State \Return failure
+  \EndIf
+  \ForAll{$i\in R$ in increasing order}
+    \State $X'\gets X\mathbin{|}p[i]$
+    \If{$\neg\Forest(X')$}
+      \State \textbf{continue}
+    \EndIf
+    \State $A\gets\Call{Search}{i+1,q+1,X',L\cup\{e_i\},k}$
+    \If{$A\neq\text{failure}$}
+      \State \Return $A$
+    \EndIf
+  \EndFor
+  \State \Return failure
+\EndFunction
+\For{$k=0,1,\ldots,\floor{n/2}$}
+  \State $A\gets\Call{Search}{0,0,0,\varnothing,k}$
+  \If{$A\neq\text{failure}$}
+    \State \Return $(k,A)$
+  \EndIf
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\begin{proposition}
+\label{prop:solver-b}
+Solver B returns a minimum-cardinality maximal acyclic matching.
+\end{proposition}
+
+\begin{proof}
+At every recursive call, $L$ is an acyclic matching, $X=V(L)$, and the edge
+indices in $L$ are strictly smaller than \textit{start}. An endpoint conflict
+cannot occur in a matching. If too few eligible suffix edges or too few
+distinct suffix endpoints remain, no completion exists. If $G[X']$ contains
+a cycle, every induced supergraph on a superset of $X'$ contains that cycle.
+Thus all pruning rules are safe.
+
+Conversely, list the edge indices of any acyclic $k$-edge matching in increasing
+order. The recursion can follow these indices. None conflicts with earlier
+endpoints, none fails the exact forest test, and the unused edges of the
+matching witness both capacity requirements. Hence every feasible $k$-edge
+matching is reached exactly once.
+
+At depth $k$, \Call{Maximal}{$X$} tests every edge with both endpoints outside
+$X$. It returns true exactly when every one-edge induced extension contains a
+cycle. This is equivalent to inclusion-wise maximality because acyclicity is
+hereditary. The outer loop exhausts all smaller cardinalities first.
+\end{proof}
+
+The worst-case search remains exponential. Solver B contributes an exact,
+auditable implementation with strong practical pruning, not a new worst-case
+exponential base.
+
+\section{Exhaustive enumeration of non-isomorphic cubic graphs}
+\label{sec:census}
+
+\subsection{Graph generation and experimental protocol}
+
+A cubic graph has even order. The experiments process
+$n=4,6,8,10,12,14,16$. To remove dependence on one generation algorithm,
+every order was generated independently by GENREG, which implements
+Meringer's orderly regular-graph generation method \cite{Meringer1999}, and by
+nauty 2.9.3 \texttt{geng} with the restrictions
+\texttt{-c -d3 -D3} and exactly $3n/2$ edges \cite{McKayPiperno2014}.
+GENREG short-code records were decoded by a separate parser. Both collections
+were converted to \texttt{graph6} and rechecked for simplicity, connectivity,
+and degree three.
+
+Each collection was canonically labelled with nauty \texttt{labelg}, sorted,
+and compared as a multiset. At orders
+$4,6,8,10,12,14,16$, the two generators produced
+$1,2,5,19,85,509,4060$ distinct graphs, respectively; the canonical multisets
+were identical at every order, with no missing, additional, or duplicated
+class. These well-known census counts are completeness checks rather than new
+enumeration results. Canonicalization is used only for comparison and is not
+part of either generation procedure.
+
+The solver protocol has three levels. First, definition-level unit tests cover
+$K_4$, $K_{3,3}$, paths, cycles, and small graph-atlas instances. Second,
+Solvers A and B are compared graph by graph on every cubic graph of order at
+most 12. Third, an independently written endpoint-set solver computes the
+optimum of every one of the 509 order-14 and 4060 order-16 graphs. It
+enumerates vertex sets $S$ in increasing even cardinality, uses a disjoint-set
+union test for $G[S]$, independently searches for a perfect matching of
+$G[S]$, and directly tests every two-vertex induced extension. The experiment
+terminates immediately on any discrepancy.
+
+\subsection{Complete census}
+
+\begin{table}[t]
+\centering
+\caption{Exact census of connected simple cubic graphs through order 16. The
+benchmark column is $\floor{n/4}$.}
+\label{tab:census}
+\begin{tabular}{rrrrrr}
+\toprule
+$n$ & Classes & Min. & Max. & Benchmark & At min. / violations\\
+\midrule
+4  & 1    & 1 & 1 & 1 & 1 / 0\\
+6  & 2    & 1 & 1 & 1 & 2 / 0\\
+8  & 5    & 2 & 2 & 2 & 5 / 0\\
+10 & 19   & 2 & 3 & 2 & 14 / 0\\
+12 & 85   & 3 & 3 & 3 & 85 / 0\\
+14 & 509  & 3 & 4 & 3 & 418 / 0\\
+16 & 4060 & 3 & 4 & 4 & 4 / 4\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Complete histogram of $\acnum$ over the cubic census.}
+\label{tab:histogram}
+\begin{tabular}{rrr@{\qquad}rrr}
+\toprule
+$n$ & $\acnum$ & Classes & $n$ & $\acnum$ & Classes\\
+\midrule
+4  & 1 & 1  & 12 & 3 & 85\\
+6  & 1 & 2  & 14 & 3 & 418\\
+8  & 2 & 5  & 14 & 4 & 91\\
+10 & 2 & 14 & 16 & 3 & 4\\
+10 & 3 & 5  & 16 & 4 & 4056\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\Cref{tab:census} summarises the outcome and \Cref{tab:histogram} gives the
+full histogram. For $n\leq 14$, every graph satisfies the
+$\floor{n/4}$ benchmark. The first violations occur
+at order 16: 4056 of the 4060 graphs have parameter value four, while four
+have value three. Hence $f_3(16)=3<4=\floor{16/4}$.
+
+\subsection{The four order-16 counterexamples}
+
+The \texttt{graph6} encoding of the first counterexample is
+\verb|O^o?GGB?w????B@@`@??X|.
+Take
+\[
+  M=\{(0,4),(5,6),(10,12)\}.
+\]
+The subgraph induced by $V(M)$ is exactly $3K_2$ and is therefore a forest.
+The unmatched induced subgraph contains nine edges; for every such edge
+$uv$, the graph $G[V(M)\cup\{u,v\}]$ contains a triangle or a 4-cycle.
+Thus $M$ cannot be extended. Solver A exhausts cardinalities zero, one, and
+two, and Solver B returns the same optimum. The independent endpoint-set
+audit also returns three for exactly the four canonical classes listed in
+\Cref{tab:counterexamples}, whose \texttt{graph6} encodings are recorded in
+\Cref{tab:graph6}. \Cref{fig:blocking} illustrates the three blocking
+mechanisms established below.
+
+\begin{table}[t]
+\centering
+\caption{All four counterexamples of order 16. ``Diam.'', ``Br.'',
+``Tri.'', and $C_4$ denote diameter, number of bridges, number of triangles,
+and number of 4-cycles, respectively.}
+\label{tab:counterexamples}
+\begin{tabular}{clrrrr}
+\toprule
+ID & Optimal matching & Diam. & Br. & Tri. & $C_4$\\
+\midrule
+4055 & $\{(10,12),(0,4),(5,6)\}$  & 9 & 2 & 6 & 7\\
+4056 & $\{(0,4),(5,6),(10,11)\}$  & 9 & 2 & 4 & 11\\
+4058 & $\{(0,4),(5,6),(11,15)\}$  & 8 & 2 & 5 & 8\\
+4059 & $\{(0,4),(5,6),(11,12)\}$  & 6 & 3 & 6 & 9\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{\texttt{graph6} encodings of the four counterexamples.}
+\label{tab:graph6}
+\begin{tabular}{rl}
+\toprule
+ID & \texttt{graph6} encoding\\
+\midrule
+4055 & \verb|O^o?GGB?w????B@@`@??X|\\
+4056 & \verb|O^o?GGB?w??@?A@@`@??L|\\
+4058 & \verb|O^o?GGB?w??@?B@?`@??J|\\
+4059 & \verb|O^o?GGB?wW?@?@?@??W?F|\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1.05cm,y=0.78cm]
+  \foreach \i/\x/\y in {
+    3/-3.0/0.0,1/-2.3/0.55,2/-1.4/0.0,0/-0.7/0.55,4/-0.7/1.65,
+    14/0.15/2.55,15/0.25/3.45,10/1.35/3.20,11/1.15/4.25,
+    12/2.25/4.10,13/2.35/5.10,5/2.55/6.05,7/2.45/7.00,
+    9/3.40/7.45,6/4.10/6.95,8/4.85/7.55}
+    \node[vertex] (v\i) at (\x,\y) {\i};
+
+  \foreach \a/\b in {
+    0/2,0/3,1/2,1/3,1/4,2/3,4/14,
+    5/7,5/13,6/8,6/9,7/8,7/9,8/9,
+    10/14,10/15,11/12,11/13,11/15,12/13,14/15}
+    \draw[densely dashed,gray!75] (v\a)--(v\b);
+  \draw[very thick] (v0)--(v4);
+  \draw[very thick] (v5)--(v6);
+  \draw[very thick] (v10)--(v12);
+\end{tikzpicture}
+\caption{A 16-vertex cubic graph with $\acnum(G)=3<4$. Thick edges form the
+matching; dashed edges are the remaining graph edges.}
+\label{fig:n16}
+\end{figure}
+
+The four counterexamples are pairwise non-isomorphic, non-bipartite, contain
+triangles, and have vertex connectivity one. Their common structure motivates
+the analysis of the components of the unmatched induced subgraph. In all four,
+the optimal matching satisfies $c=3$ and $t=1$ in the notation of
+\Cref{sec:blocking}, and the induced forest $G[V(M)]$ is $3K_2$; the
+unmatched induced subgraph is $2C_3\cup P_4$ for IDs 4055, 4056, and 4058, and
+$3C_3\cup K_1$ for ID 4059.
+
+This split is exactly the boundary of the equality family. The existence
+proof in \Cref{sec:constructions} uses one canonical assignment of degree
+slots, recorded there. Independently enumerating all bijections of the
+$t=1$ base construction yields $3456$ labelled graphs falling into precisely
+three isomorphism classes, namely IDs 4055, 4056, and 4058. The graph in
+\Cref{fig:n16} is one of them. ID 4059 is not obtained by any slot
+assignment: it is the graph formed by three leaf pieces $K_2+C_3$ whose three
+$K_2$ components each send one degree slot to a single common unmatched
+vertex. Its unmatched induced subgraph therefore has an isolated vertex as
+its unique tree component instead of the root $P_4$, and it has three bridges
+rather than two. Consequently the construction of
+\Cref{sec:constructions} is sufficient for sharpness but is not a
+classification of extremal graphs; see \Cref{rem:non-uniqueness}.
+
+\section{Local blocking structure of maximality}
+\label{sec:blocking}
+
+Fix a connected simple cubic graph $G$ and an arbitrary maximal acyclic
+matching $M$. Let
+\[
+  k=|M|,\qquad S=V(M),\qquad U=V(G)\setminus S,\qquad
+  F=G[S],\qquad H=G[U].
+\]
+By definition, $F$ is a forest and $|S|=2k$. Note that $k\geq 1$: the empty
+matching is acyclic but never maximal, because a single edge always induces a
+forest. Hence $c\geq 1$ throughout, and $U\neq\varnothing$, since otherwise
+$F=G$ would be a cubic forest.
+
+\subsection{Maximality as non-extendability by one edge}
+
+\begin{lemma}
+\label{lem:one-edge}
+An acyclic matching $M$ is maximal if and only if there is no edge
+$e\in E(G)\setminus M$ such that $M\cup\{e\}$ is an acyclic matching.
+\end{lemma}
+
+\begin{proof}
+If an acyclic matching $M'$ strictly contains $M$, choose
+$e\in M'\setminus M$. Acyclic matchings are closed under taking subsets, so
+$M\cup\{e\}$ remains acyclic. Hence the absence of a one-edge extension is
+equivalent to the absence of every strict extension.
+\end{proof}
+
+An edge can be added to $M$ exactly when both endpoints lie in $U$; the
+candidate extension edges are precisely $E(H)$. Consequently, for every
+$uv\in E(H)$, the induced subgraph $G[S\cup\{u,v\}]$ contains a cycle.
+
+\subsection{An exact local blocking criterion}
+
+For $x\in U$ and a component $C$ of $F$, define
+\[
+  d_C(x)=|N_G(x)\cap V(C)|.
+\]
+
+\begin{lemma}
+\label{lem:blocking}
+Let $uv\in E(H)$. Then $G[S\cup\{u,v\}]$ contains a cycle if and only if at
+least one of the following holds:
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+  \item $d_C(u)\geq 2$ for some component $C$ of $F$;
+  \item $d_C(v)\geq 2$ for some component $C$ of $F$;
+  \item $u$ and $v$ are both adjacent to the same component $C$ of $F$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+If (i) holds, two distinct neighbors of $u$ in the tree $C$ are joined by a
+unique path in $C$; that path together with $u$ forms a cycle. The proof for
+(ii) is symmetric. If (iii) holds, choose
+$a\in N(u)\cap V(C)$ and $b\in N(v)\cap V(C)$. If $a=b$, then $uav$ is a
+triangle. Otherwise the unique $a$--$b$ path in $C$, together with
+$ua,uv,vb$, is a cycle.
+
+Conversely, let $Q$ be a cycle in $G[S\cup\{u,v\}]$. Since $F$ is a forest,
+$Q$ contains $u$ or $v$. If it contains exactly one, that vertex has two
+neighbors on $Q$ in one component of $F$, giving (i) or (ii). If $Q$ contains
+both $u$ and $v$, either deleting $uv$ from $Q$, or taking either $u$--$v$ arc
+when $uv\notin E(Q)$, gives a path whose internal vertices lie in one
+$F$-component. Thus (iii) holds.
+\end{proof}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=0.72, every node/.style={font=\scriptsize}]
+  \begin{scope}[xshift=0cm]
+    \node[vertex] (u1) at (0,2) {$u$};
+    \node[vertex] (v1) at (2,2) {$v$};
+    \node[vertex] (a1) at (-0.7,0) {};
+    \node[vertex] (b1) at (0.2,-0.4) {};
+    \node[vertex] (c1) at (1.0,0) {};
+    \draw[very thick] (u1)--(v1);
+    \draw[double,double distance=1.8pt,line width=0.45pt] (a1)--(b1)--(c1);
+    \draw (u1)--(a1) (u1)--(c1);
+    \node at (0.6,-1.0) {$u$ self-blocks};
+  \end{scope}
+  \begin{scope}[xshift=5.2cm]
+    \node[vertex] (u2) at (0,2) {$u$};
+    \node[vertex] (v2) at (2,2) {$v$};
+    \node[vertex] (a2) at (1.0,0) {};
+    \node[vertex] (b2) at (1.8,-0.4) {};
+    \node[vertex] (c2) at (2.7,0) {};
+    \draw[very thick] (u2)--(v2);
+    \draw[double,double distance=1.8pt,line width=0.45pt] (a2)--(b2)--(c2);
+    \draw (v2)--(a2) (v2)--(c2);
+    \node at (1.8,-1.0) {$v$ self-blocks};
+  \end{scope}
+  \begin{scope}[xshift=10.8cm]
+    \node[vertex] (u3) at (0,2) {$u$};
+    \node[vertex] (v3) at (2.6,2) {$v$};
+    \node[vertex] (a3) at (0.2,0) {};
+    \node[vertex] (b3) at (1.2,-0.4) {};
+    \node[vertex] (c3) at (2.4,0) {};
+    \draw[very thick] (u3)--(v3);
+    \draw[double,double distance=1.8pt,line width=0.45pt] (a3)--(b3)--(c3);
+    \draw (u3)--(a3) (v3)--(c3);
+    \node at (1.3,-1.0) {$u,v$ meet one $F$-component};
+  \end{scope}
+\end{tikzpicture}
+\caption{The three local mechanisms that block an unmatched edge. Double
+strokes mark paths that lie in a component of the forest $F$; these remain
+legible in greyscale.}
+\label{fig:blocking}
+\end{figure}
+
+\subsection{Components of the unmatched induced subgraph}
+
+\begin{lemma}
+\label{lem:h-components}
+Every connected component of $H=G[U]$ is a path, a cycle, or $K_{1,3}$.
+\end{lemma}
+
+\begin{proof}
+Suppose $x\in U$ has degree three in $H$. Since $G$ is cubic, $x$ has no
+neighbor in $S$. For any $y\in N_H(x)$, apply \Cref{lem:blocking} to $xy$.
+The vertex $x$ cannot block the edge by itself, and $x,y$ cannot be jointly
+adjacent to an $F$-component. Hence $y$ must block the edge by itself. It has
+exactly two neighbors in one $F$-component and, by cubicity, $x$ is its only
+neighbor in $H$. Thus the component containing $x$ is $K_{1,3}$.
+
+If an $H$-component contains no vertex of degree three, its maximum degree is
+at most two. Every finite connected graph of maximum degree at most two is a
+path or a cycle.
+\end{proof}
+
+\begin{lemma}
+\label{lem:component-incidence}
+Every tree component of $H$ is adjacent to at most three distinct components
+of $F$, whereas every cycle component of $H$ is adjacent to exactly one
+component of $F$.
+\end{lemma}
+
+\begin{proof}
+An isolated vertex of $H$ has three neighbors in $S$ and hence meets at most
+three $F$-components. If the component is $K_{1,3}$, its center has no
+neighbor in $S$. Applying \Cref{lem:blocking} to each center--leaf edge shows
+that the two $S$-neighbors of each leaf lie in one $F$-component; the three
+leaves therefore meet at most three such components.
+
+Consider a path $x_1\ldots x_r$. The case $r=2$ is immediate: if one endpoint
+self-blocks, it contributes one $F$-component and the other at most two; if
+neither self-blocks, their two sets of incident components intersect, so their
+union has size at most three. For $r\geq 3$, every internal vertex has exactly
+one neighbor in $S$ and cannot self-block. Applying \Cref{lem:blocking} along
+the edges between consecutive internal vertices shows that all internal
+vertices meet one common $F$-component $C$. Each endpoint contributes at most
+one component outside $C$, so the whole path meets at most three components.
+The same argument also covers $P_3$.
+
+Finally, every vertex in a cycle component of $H$ has exactly one neighbor in
+$S$ and cannot self-block. Each cycle edge must therefore be blocked through
+a common $F$-component. Propagating around the cycle shows that all its
+vertices meet one and the same component of $F$.
+\end{proof}
+
+\subsection{The component-incidence graph}
+
+Let $c$ be the number of connected components of $F$, and let $t$ be the number
+of tree components of $H$, including paths, isolated vertices, and
+$K_{1,3}$ components. Construct a simple bipartite graph $B$ whose left side
+consists of the $F$-components and whose right side consists of the
+$H$-components. Two component vertices are adjacent when at least one edge
+of $G$ joins the corresponding components.
+
+\begin{lemma}
+\label{lem:incidence-bound}
+The inequalities $c\leq 2t+1$ and $c\leq k$ hold.
+\end{lemma}
+
+\begin{proof}
+Connectivity of $G$ implies that $B$ is connected. By
+\Cref{lem:component-incidence}, every cycle component of $H$ is a leaf of $B$.
+Delete all such leaves to obtain $B_0$. Deleting leaves cannot disconnect the
+remaining vertices. Hence $B_0$ is connected.
+
+If $t=0$, connectedness forces $c=1$, so $c\leq 2t+1$. If $t\geq 1$, then
+$B_0$ has $c+t$ vertices and at least $c+t-1$ edges. Each of its $t$
+right-side vertices has degree at most three by
+\Cref{lem:component-incidence}, so $|E(B_0)|\leq 3t$. Therefore
+$c+t-1\leq 3t$, or $c\leq 2t+1$.
+
+Every component of $F$ contains at least one edge of $M$, and distinct
+$F$-components contain distinct matching edges. Thus $c\leq k$.
+\end{proof}
+
+\section{Sharp lower bound}
+\label{sec:bound}
+
+\subsection{Cut-edge counting}
+
+The forest $F$ has $2k$ vertices and $c$ components, so
+$|E(F)|=2k-c$. Counting the cut $E(S,U)$ from the $S$ side gives
+\begin{equation}
+  |E(S,U)|
+  =3|S|-2|E(F)|
+  =6k-2(2k-c)
+  =2k+2c.
+  \label{eq:cut-s}
+\end{equation}
+By \Cref{lem:h-components}, every component of $H$ is a tree or a cycle. A
+tree component has one fewer edge than vertices, while a cycle component has
+as many edges as vertices. Since $H$ has $t$ tree components,
+$|E(H)|=|U|-t$. Counting the same cut from the $U$ side gives
+\begin{equation}
+  |E(S,U)|
+  =3|U|-2|E(H)|
+  =3|U|-2(|U|-t)
+  =|U|+2t.
+  \label{eq:cut-u}
+\end{equation}
+Equating \eqref{eq:cut-s} and \eqref{eq:cut-u} yields
+\begin{equation}
+  |U|=2k+2c-2t,
+  \qquad
+  n=|S|+|U|=4k+2(c-t).
+  \label{eq:master-count}
+\end{equation}
+
+\subsection{Integer optimization}
+
+Subtracting $t$ from the bounds in \Cref{lem:incidence-bound} gives
+\[
+  c-t\leq\min\{k-t,t+1\}.
+\]
+For integral $t\geq 0$, the maximum of the right-hand side is
+$\ceil{k/2}$. Substituting this into \eqref{eq:master-count} gives
+\[
+  n\leq 4k+2\ceil{\frac{k}{2}}
+  =
+  \begin{cases}
+    5k,   & k\text{ even},\\
+    5k+1, & k\text{ odd}.
+  \end{cases}
+\]
+
+\begin{theorem}
+\label{thm:sharp-lower}
+Let $G$ be a connected simple cubic graph of order $n$, and let $M$ be any
+maximal acyclic matching of $G$ with $k=|M|$. Then $n\leq 5k$ when $k$ is
+even and $n\leq 5k+1$ when $k$ is odd. In particular,
+\[
+  \acnum(G)\geq\ceil{\frac{n-1}{5}}.
+\]
+\end{theorem}
+
+\begin{proof}
+The parity-sensitive inequalities follow from \eqref{eq:master-count} and the
+integer optimization above. Both imply $n\leq 5k+1$, and hence
+$k\geq(n-1)/5$. Since $k$ is integral,
+$k\geq\ceil{(n-1)/5}$. The argument applies to every maximal acyclic
+matching, and therefore to one of minimum cardinality.
+\end{proof}
+
+Because every cubic graph has even order, the two parity cases are numerically
+equivalent to the unified inequality $n\leq 5k+1$: when $k$ is even, the
+right-hand side is odd and integrality sharpens it to $n\leq 5k$. The split
+remains structurally informative, since the extra vertex is possible only for
+odd $k$, as the example $n=16,k=3$ demonstrates.
+
+\section{Equality constructions for every even order}
+\label{sec:constructions}
+
+Throughout this section, $P_r$ and $C_r$ denote the path and cycle on $r$
+vertices. For $P_{2s}=v_1\ldots v_{2s}$, its alternating matching is
+\[
+  \{v_1v_2,v_3v_4,\ldots,v_{2s-1}v_{2s}\}.
+\]
+For each even $n\geq 4$, we construct a connected simple cubic graph of order
+$n$ together with a maximal acyclic matching of size
+$\ceil{(n-1)/5}$. By \Cref{thm:sharp-lower}, every displayed matching is
+automatically minimum.
+
+\subsection{Base construction for odd matching size}
+
+Let $k_0=2t+1$ be odd with $t\geq 1$. Begin with $k_0$ vertex-disjoint copies
+of $K_2$ in $S$, and include all their edges in $M$. Designate one copy as
+the root component $R$. A remaining degree slot of a vertex means an
+unassigned incident edge needed to bring its degree to three.
+
+All attachments below follow one canonical pairing, so the construction is a
+single well-defined graph rather than a family of bijections. For a matched
+path $P_{2s}=v_1\ldots v_{2s}$, list remaining slots in vertex order along the
+path, repeating each endpoint once for every unused incidence: $v_1$, $v_1$,
+then each internal vertex once, then $v_{2s}$, $v_{2s}$. In particular a
+copy of $K_2$ contributes the four-slot list $v_1,v_1,v_2,v_2$. For a
+$U$-path $x_1\ldots x_r$ or $U$-cycle $z_1\ldots z_r$, list vertices in that
+path or cyclic order from the designated start. Pair the two lists in this
+order. New $K_2$ components are introduced in the order they are first used.
+
+\begin{enumerate}[leftmargin=2em]
+  \item Place a path $P_4=x_1x_2x_3x_4$ in $U$ and attach $x_1,x_2,x_3,x_4$
+  to the four canonical slots of $R$ in that order. Join $x_1$ and $x_4$ to
+  two distinct unused $K_2$ components $R_1$ and $R_4$, using one slot of
+  each.
+
+  \item If $t=1$, declare both $R_1$ and $R_4$ terminal. If $t>1$, declare
+  $R_1$ terminal and $R_4$ active. At each subsequent step, take the
+  canonical slot list of the active $K_2$, use its first slot for the already
+  present upward edge to the previous $U$-path, and pair the remaining three
+  slots with a new path $P_3=y_1y_2y_3$. Join $y_1$ to a new unused $K_2$
+  (declared terminal) and $y_3$ to a new unused $K_2$ (declared the next
+  active component). Repeat $t-1$ times, then declare the final active
+  component terminal.
+
+  \item Process terminal $K_2$ components in the order they were designated.
+  Each has three remaining canonical slots; attach a triangle
+  $z_1z_2z_3$ by pairing those slots with $z_1,z_2,z_3$ in order.
+\end{enumerate}
+
+The procedure uses $1+2+2(t-1)=2t+1=k_0$ copies of $K_2$ and leaves
+$t+1$ of them terminal. Every degree slot is used once, no loop or parallel
+edge is created, every vertex has degree three, and the attachment sequence
+keeps the graph connected.
+
+The graph $G[S]$ is the disjoint union of $k_0$ copies of $K_2$, so $M$ is
+acyclic. The endpoints of every edge of the root $P_4$ meet $R$; all vertices
+of each $P_3$ meet its active $K_2$; and all vertices of each triangle meet
+one terminal $K_2$. \Cref{lem:blocking} therefore blocks every edge of
+$G[U]$, so $M$ is maximal. Moreover,
+\[
+  |U|=4+3(t-1)+3(t+1)=6t+4=3k_0+1,
+  \qquad
+  n=2k_0+|U|=5k_0+1.
+\]
+
+\subsection{Residue-class adjustment}
+
+The replaced leaf is the first designated terminal, namely the $K_2$ joined
+to $x_1$. In the base construction that $K_2$ is joined to the rest of the
+graph by a single edge, and the other end of that edge is a vertex $w\in U$.
+
+For an integer $q\geq 0$, replace this terminal $K_2$ by the alternating path
+$P_{2(q+1)}=v_1\ldots v_{2q+2}$ in $S$ and replace the triangle by $C_{2q+3}$
+in $U$. Include the $q+1$ alternating path edges in $M$. Form the canonical
+slot list of the path, which has $2q+4$ entries. Reserve its first entry
+for the reattachment edge $v_1w$, and pair the remaining $2q+3$ slots with
+the cycle vertices $z_1,\ldots,z_{2q+3}$ in cyclic order.
+
+Because $w\in U$, the reattachment edge is a cut edge between $S$ and $U$ and
+not an edge inside $S$; this is what keeps $G[S]$ a forest. Indeed the
+replacement piece contributes the single new $F$-component $P_{2(q+1)}$, which
+is a tree, and it is joined to the rest of $S$ by no edge at all. The degree
+of $w$ is unchanged, since the edge it previously received from the terminal
+$K_2$ is replaced by $v_1w$. The operation therefore preserves simplicity,
+connectivity, cubicity, and the fact that $G[S]$ is a forest. Both endpoints
+of each new cycle edge meet the same $S$-path component, so \Cref{lem:blocking}
+blocks every new $H$-edge and maximality is preserved; the blocking of every
+old $H$-edge is untouched, because each such edge is blocked through the root
+$K_2$ or an active $K_2$, none of which is modified. Taking $q=0$ recovers the
+original leaf piece, so the operation is consistent with the base
+construction. \Cref{fig:construction} shows the resulting
+component-incidence skeleton for $t=2$ and $q=1$. Relative to $K_2+C_3$, the
+replacement adds $q$ matching edges and $4q$ vertices. If $k=k_0+q$, then
+\begin{equation}
+  n=(5k_0+1)+4q=5k+1-q.
+  \label{eq:residue}
+\end{equation}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1.8cm,y=1.4cm]
+  \node[htree]  (X0) at (0,2.4) {$X_0$\\$P_4$};
+  \node[htree]  (X1) at (3.7,2.4) {$X_1$\\$P_3$};
+  \node[fcomp]  (R)  at (-1,0.8) {$R$\\root $K_2$};
+  \node[fcomp]  (L)  at (0,0.8) {$L=P_4$\\replacement};
+  \node[fcomp]  (A1) at (1,0.8) {$A_1$\\active $K_2$};
+  \node[fcomp]  (A2) at (3.3,0.8) {$A_2$\\terminal $K_2$};
+  \node[fcomp]  (B2) at (4.7,0.8) {$B_2$\\terminal $K_2$};
+  \node[hcycle] (Z)  at (0,-0.8) {$Z$\\$C_5$};
+  \node[hcycle] (ZA) at (3.3,-0.8) {$Z_A$\\$C_3$};
+  \node[hcycle] (ZB) at (4.7,-0.8) {$Z_B$\\$C_3$};
+  \draw (X0)--(R) (X0)--(L) (X0)--(A1);
+  \draw (X1)--(A1) (X1)--(A2) (X1)--(B2);
+  \draw (L)--(Z) (A2)--(ZA) (B2)--(ZB);
+  \node[font=\scriptsize] at (4.65,2.9) {$t=2,\ q=1$};
+\end{tikzpicture}
+\caption{Component-incidence skeleton for $t=2,q=1$. Circles are tree
+components of $H=G[U]$, rectangles are components of $F=G[S]$, and triangles
+are cycle components of $H$.}
+\label{fig:construction}
+\end{figure}
+
+\subsection{Covering every even order}
+
+Fix an even integer $n\geq 4$, set
+\[
+  k=\ceil{\frac{n-1}{5}},
+  \qquad
+  q=5k+1-n.
+\]
+The definition of the ceiling gives $k-1<(n-1)/5\leq k$, hence
+$5k-4<n\leq 5k+1$ and $q\in\{0,1,2,3,4\}$. Put $k_0=k-q$. Since
+$k_0=n-4k-1$ and both $n$ and $4k$ are even, $k_0$ is odd.
+
+Only three cases occur. As $q\leq 4$ we have $k_0\geq k-4$, and $k\geq 1$ for
+every even $n\geq 4$. If $k_0\leq -5$ then $q=k-k_0\geq 6$, which is
+impossible; if $k_0=-3$ then $q=k+3\leq 4$ forces $k=1$ and hence
+$n=5k+1-q=2$, excluded by $n\geq 4$. Therefore $k_0\in\{-1,1\}$ or
+$k_0\geq 3$, and these three cases are treated in turn.
+
+If $k_0\geq 3$, use the base construction and the size-$q$ leaf replacement.
+Equation \eqref{eq:residue} gives exactly $n$ vertices and $k$ matching edges.
+
+If $k_0=1$, then $q=k-1\leq 4$, so $k\leq 5$ and
+$n=5k+1-(k-1)=4k+2$, that is, $n\in\{6,10,14,18,22\}$. Take
+$F=P_{2k}$ with its alternating matching and $H=C_{2k+2}$, and pair the
+$2k+2$ canonical slots of $F$ with the cycle vertices in cyclic order. This graph
+has $4k+2=n$ vertices, and every $H$-edge is jointly blocked by the unique
+$F$-component. This family is not the $k_0=1$ instance of
+\Cref{eq:residue}: with no skeleton to reattach, the path keeps all
+$2k+2$ of its slots instead of reserving one, so the attached cycle is
+$C_{2k+2}$ rather than $C_{2k+1}$. The distinction is forced, since a piece
+$P_{2k}+C_{2k+1}$ would have the odd order $4k+1$ and no cubic graph has odd
+order.
+
+It remains to treat $k_0=-1$, where $q=k+1\leq 4$ gives $k\leq 3$ and
+$n=5k+1-(k+1)=4k$, that is, $n\in\{4,8,12\}$. For $K_4$, any edge is a maximal
+acyclic matching. For the cube $Q_3$, label vertices by three-bit strings and
+take
+\[
+  M=\{000\text{--}001,\ 110\text{--}111\}.
+\]
+For the hexagonal prism, let the two 6-cycles be
+$a_0\ldots a_5$ and $b_0\ldots b_5$ with vertical edges $a_ib_i$, and take
+\[
+  M=\{a_0b_0,a_2b_2,a_4b_4\}.
+\]
+In each case, direct application of \Cref{lem:blocking} proves maximality.
+
+\begin{theorem}
+\label{thm:extremal}
+For every even $n\geq 4$, there exists a connected simple cubic graph $G$ of
+order $n$ such that
+\[
+  \acnum(G)=\ceil{\frac{n-1}{5}}.
+\]
+Consequently,
+\[
+  f_3(n)=\ceil{\frac{n-1}{5}}
+  \qquad(n\geq 4\text{ even}).
+\]
+\end{theorem}
+
+\begin{proof}
+The constructions above provide a maximal acyclic matching of size
+$k=\ceil{(n-1)/5}$, so $\acnum(G)\leq k$.
+\Cref{thm:sharp-lower} gives $\acnum(G)\geq k$ for every connected cubic graph.
+\end{proof}
+
+\begin{remark}
+\label{rem:non-uniqueness}
+The constructions establish sharpness but do not classify the extremal graphs.
+At order 16 the census contains four graphs with $\acnum(G)=3$, and only three
+of them arise from the $t=1$ base construction under some assignment of degree
+slots. The fourth replaces the root $P_4$ by a single unmatched vertex joined
+to three leaf pieces $K_2+C_3$, one slot per piece. Both configurations
+realise $c=3$ and $t=1$ and hence the same value of \eqref{eq:master-count};
+what differs is which tree component of $H$ carries the incidences. Any
+classification of the extremal graphs must therefore account for at least
+these two mechanisms.
+\end{remark}
+
+\section{Algorithmic consequences: a theory-guided exact solver}
+\label{sec:solverc}
+
+This section translates the proved structure into Solver C, an exact algorithm
+specialized to nonempty connected simple cubic graphs. Solver C intentionally
+uses \Cref{thm:sharp-lower} and its counting consequences. It is therefore a
+\emph{post-theorem} algorithm and must not replace Solvers A and B or the
+endpoint-set audit in the non-circular verification chain.
+
+\subsection{The edge-interaction forest}
+
+Let $e=ab$ and $f=cd$ be two candidate graph edges.
+\begin{definition}
+\label{def:interactions}
+The pair $(e,f)$ has:
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+  \item an \emph{endpoint conflict} if
+  $\{a,b\}\cap\{c,d\}\neq\varnothing$;
+  \item a \emph{cycle conflict} if the endpoint sets are disjoint and
+  \[
+    \lambda(e,f)
+    :=|E_G(\{a,b\},\{c,d\})|\geq 2;
+  \]
+  \item a \emph{link} if the endpoint sets are disjoint and
+  $\lambda(e,f)=1$.
+\end{enumerate}
+For a set $M$ of pairwise endpoint-disjoint edges, the \emph{link graph}
+$L(M)$ has vertex set $M$ and an edge $ef$ for each linked pair.
+\end{definition}
+
+\begin{proposition}[interaction-forest characterization]
+\label{prop:interaction-forest}
+A set $M\subseteq E(G)$ is an acyclic matching if and only if:
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+  \item no selected pair has an endpoint conflict;
+  \item no selected pair has a cycle conflict; and
+  \item $L(M)$ is a forest.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The endpoint-conflict condition is precisely the requirement that $M$ be a
+matching, so assume $M$ is a matching and contract every edge of $M$ in the
+induced graph $G[V(M)]$. Every vertex of $G[V(M)]$ is covered by $M$, so the
+contraction sends each pair of endpoints to a single vertex, and every
+remaining edge of $G[V(M)]$ joins two distinct such vertices.
+
+Suppose first that $M$ has a cycle conflict, say $\lambda(e,f)\geq 2$ for
+$e=ab$ and $f=cd$. Two distinct edges of $E_G(\{a,b\},\{c,d\})$ together with
+$e$ and $f$ contain a cycle of $G[V(M)]$ of length three or four, so
+$G[V(M)]$ is not a forest. Suppose next that $M$ has no cycle conflict but
+$L(M)$ contains a cycle $f_1f_2\ldots f_sf_1$. Choosing the unique cross edge
+realising each link and traversing the matching edges $f_i$ in between yields
+a cycle of $G[V(M)]$, so again $G[V(M)]$ is not a forest.
+
+Conversely, suppose $G[V(M)]$ contains a cycle $Q$. Contracting maps $Q$ to a
+closed walk $W$ in $L(M)$ of positive length, since $Q$ is not contained in a
+single matched pair. If $W$ immediately backtracked, $Q$ would use two
+distinct edges of $E_G(\{a,b\},\{c,d\})$ for one pair, that is, a cycle
+conflict. In the absence of a cycle conflict, $W$ is a closed walk without
+immediate backtracking and therefore contains a cycle of $L(M)$. Hence
+$G[V(M)]$ is a forest exactly when there is no cycle conflict and $L(M)$ is a
+forest.
+\end{proof}
+
+The characterization also gives an exact maximality test. Suppose $M$ is
+acyclic and $e\notin M$ has no endpoint or cycle conflict with a selected edge.
+Adding $e$ inserts one new vertex into $L(M)$, adjacent to all selected edges
+linked to $e$. This preserves the forest exactly when those neighbors lie in
+pairwise distinct components of $L(M)$. Therefore $M$ is maximal if and only
+if every unselected edge either has a hard conflict (endpoint or cycle), or
+has two link-neighbors already lying in the same link-forest component.
+
+\subsection{Rollback-DSU search}
+
+Solver C precomputes all endpoint conflicts, cycle conflicts, and links in
+$\bigO(m^2)$ time. During a branch, each selected graph edge is an active
+vertex of the link forest. A rollback disjoint-set union structure maintains
+its components. To add a candidate $e$, the algorithm checks whether two
+current link-neighbors of $e$ already have the same root. If so, adding $e$
+closes a cycle; otherwise $e$ is activated and joined to those distinct roots.
+A snapshot permits constant-stack rollback after the recursive call.
+
+Search is performed in increasing target cardinality. Capacity bounds use the
+number of available suffix edges and their endpoint union. Near a leaf of the
+search tree, Solver C also applies a rigid-maximality rule. If an unselected
+edge can have at most one link-neighbor in every completion of the current
+branch, it can never be cycle-blocked. It must therefore be selected itself or
+hard-conflicted by a future selected edge. These necessary alternatives form
+small hitting-set constraints; the implementation invokes the rule only when
+at most two matching slots remain and solves the resulting hitting-set check
+exactly.
+
+\begin{algorithm}[t]
+\caption{Solver C: theorem-guided interaction-forest search}
+\label{alg:solver-c}
+\begin{algorithmic}[1]
+\Require A nonempty connected simple cubic graph $G$
+\State Precompute endpoint conflicts, cycle conflicts, and links
+\State $\ell\gets\ceil{(|V(G)|-1)/5}$
+\For{$k=\ell,\ell+1,\ldots,\floor{|V(G)|/2}$}
+  \State $D\gets\min\{k-1,\,5k+1-|V(G)|\}$
+  \If{$D<0$}
+    \State \textbf{continue}
+  \ElsIf{$D=0$}
+    \State $M\gets\Call{ZeroDefectDomination}{G,k}$
+  \Else
+    \State $M\gets\Call{InteractionForestSearch}{G,k,D}$
+  \EndIf
+  \If{$M\neq\text{failure}$}
+    \State Verify $M$ with the definition-level matching/forest/maximality routine
+    \State \Return $(k,M)$
+  \EndIf
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{The theorem-derived defect budget}
+
+For an acyclic $k$-edge matching, let $\delta=|E(L(M))|$. Since $L(M)$ is a
+forest with $k$ vertices, its component count is
+\[
+  c=k-\delta.
+\]
+The variables $c$ and $t$ are the same component counts used in
+\eqref{eq:master-count}. From
+\[
+  n=4k+2(c-t)
+  \quad\text{and}\quad
+  c\leq 2t+1,
+\]
+we obtain $n\leq 4k+c+1$, hence $c\geq n-4k-1$. Therefore
+\[
+  \delta=k-c\leq 5k+1-n.
+\]
+Also $c\geq 1$, so $\delta\leq k-1$. Every solution at target $k$ must satisfy
+\begin{equation}
+  \boxed{\delta\leq\min\{k-1,\,5k+1-n\}.}
+  \label{eq:defect-budget}
+\end{equation}
+At the first theoretically possible target
+$k_0=\ceil{(n-1)/5}$, the quantity $5k_0+1-n$ belongs to
+$\{0,1,2,3,4\}$. Thus the first target layer permits at most four link edges.
+This bound is safe but theorem-dependent; it is the principal reason Solver C
+cannot independently verify \Cref{thm:sharp-lower}.
+
+\subsection{The zero-defect residue class}
+
+When $n=5k+1$, \eqref{eq:defect-budget} forces $\delta=0$. The selected edges
+then form an independent set in the union of the endpoint-conflict,
+cycle-conflict, and link relations: no two of them are related at all. Every
+component of $L(M)$ is a single vertex, so an unselected edge can never have
+two link-neighbors in one component, and a single link to a selected edge does
+not create a cycle. Maximality is therefore achieved only by selecting an edge
+itself or by selecting one of its endpoint or cycle hard conflicts.
+
+Consequently the zero-defect target is an independent domination problem with
+one relation for incompatibility and a smaller relation for domination.
+Solver C branches on an undominated edge $e$ and selects one member of
+\[
+  \{e\}\cup N_{\mathrm{hard}}(e).
+\]
+Every feasible solution must hit this set. Fail-first selection, a safe
+coverage lower bound, and memoization of failed
+$(\textit{available},\textit{dominated},\textit{slots})$ states complete the
+specialized search. No polynomial-time claim is made: the general worst-case
+search remains exponential.
+
+\begin{proposition}
+\label{prop:solver-c-correct}
+Solver C returns $\acnum(G)$ and a corresponding maximal acyclic matching for
+every nonempty connected simple cubic graph $G$.
+\end{proposition}
+
+\begin{proof}
+\Cref{prop:interaction-forest} shows that the precomputed relations and the
+rollback structure recognize acyclic matchings exactly. Capacity pruning is
+necessary for completing the requested number of disjoint edges. The defect
+pruning follows from \eqref{eq:defect-budget}. Every rigid-maximality
+constraint is necessary because an edge with at most one possible
+link-neighbor cannot become cycle-blocked; the exact small hitting-set test
+therefore removes no completion. In the zero-defect case, branching on
+$\{e\}\cup N_{\mathrm{hard}}(e)$ is complete for every undominated edge.
+The coverage bound is a standard lower bound on the remaining number of
+dominating choices, and memoization only reuses failed exact states.
+
+At a complete candidate, the interaction criterion tests maximality exactly,
+and the implementation rechecks the returned witness with the independent
+definition-level routine. The search starts at the proved lower bound and
+increases $k$ only after exhausting the previous target. Hence the first
+returned witness is optimal.
+\end{proof}
+
+\subsection{A linear vertex kernel}
+
+Consider the parameterized decision problem on connected simple cubic graphs:
+given $(G,K)$, decide whether $\acnum(G)\leq K$.
+
+\begin{corollary}
+\label{cor:kernel}
+\LowAcy{} on connected simple cubic graphs is fixed-parameter tractable with
+respect to the solution-size parameter $K$.
+\end{corollary}
+
+\begin{proof}
+If $\acnum(G)\leq K$, then \Cref{thm:sharp-lower} implies $n\leq 5K+1$.
+Thus any instance with $n>5K+1$ is a no-instance and may be replaced by a
+fixed no-instance, for example $(K_4,0)$. Every remaining instance already
+has at most $5K+1$ vertices. This is an identity kernel on yes-instances: the
+bound itself discards oversized inputs, and no further reduction rule is
+applied. A cubic graph on at most $5K+1$ vertices has at most
+$3(5K+1)/2$ edges, so enumerating edge subsets of size at most $K$ and
+checking the definition takes $2^{\bigO(K)}\operatorname{poly}(|G|)$ time.
+\end{proof}
+
+The same bound is what Solver~C uses as a search floor. It is recorded here
+as an FPT consequence of \Cref{thm:sharp-lower}, not as an independent
+kernelization algorithm.
+
+\subsection{Census performance at a glance}
+
+Solver~C is a post-theorem search procedure, not independent evidence for
+\Cref{thm:sharp-lower}. On the complete census of $4681$ non-isomorphic
+connected simple cubic graphs of orders $4,6,\ldots,16$ it agrees with the
+theorem-independent bitset solver on every optimum. \Cref{tab:solverc-bench}
+records whole-layer median times: at order $16$ the median drops from
+$94.18$ to $32.46$ seconds and the number of complete candidates from
+$4{,}832{,}310$ to $40{,}158$. The timing protocol, per-graph ratios,
+equality-family scaling, and ablations are given in \Cref{app:benchmark}.
+
+\begin{table}[t]
+\centering
+\caption{Paired full-census comparison. Times are medians of whole-layer
+repetitions. Speedup is $T_B/T_C$, and reduction compares complete candidates.}
+\label{tab:solverc-bench}
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{rrrrrrrrr}
+\toprule
+$n$ & Graphs & B time (s) & C time (s) & Speedup & B candidates & C candidates & Reduction & Disc.\\
+\midrule
+4  & 1     & 0.0008 & 0.0010 & $0.88\times$ & 2         & 1      & 50.00\% & 0\\
+6  & 2     & 0.0053 & 0.0040 & $1.33\times$ & 5         & 2      & 60.00\% & 0\\
+8  & 5     & 0.0127 & 0.0126 & $1.01\times$ & 70        & 5      & 92.86\% & 0\\
+10 & 19    & 0.0839 & 0.0896 & $0.94\times$ & 989       & 358    & 63.80\% & 0\\
+12 & 85    & 0.4467 & 0.3775 & $1.18\times$ & 11,151    & 179    & 98.39\% & 0\\
+14 & 509   & 5.9727 & 4.8901 & $1.22\times$ & 224,027   & 43,691 & 80.50\% & 0\\
+16 & 4,060 & 94.1762& 32.4600& $2.90\times$ & 4,832,310 & 40,158 & 99.17\% & 0\\
+\midrule
+All & 4,681 & 100.6984 & 37.8348 & $2.66\times$ & 5,068,554 & 84,394 & 98.34\% & 0\\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\section{Independent computational verification and reproducibility}
+\label{sec:verification}
+
+\subsection{Independent implementations and structural stress tests}
+
+Solvers A and B agree graph by graph on every cubic graph of order at most 12.
+The test suite also covers $K_4$, $K_{3,3}$, paths, cycles, non-cubic graphs,
+small graph-atlas instances, and a dedicated trap instance that requires
+rebuilding the full vertex-induced subgraph after a matching edge is added.
+
+The order-14 and order-16 audit uses a different search space. For each
+even-cardinality set $S\subseteq V(G)$, considered in increasing $|S|$, it
+checks by disjoint-set union whether $G[S]$ is a forest, recursively searches
+for a perfect matching of $G[S]$, and tests every edge $uv$ outside $S$ by
+rebuilding $G[S\cup\{u,v\}]$. A $k$-edge acyclic matching has an endpoint set
+of size $2k$ satisfying the first two tests; conversely, a perfect matching of
+such a set is acyclic. The last test is equivalent to maximality by
+\Cref{lem:one-edge}. The first accepted endpoint set therefore certifies the
+optimum, not merely a witness value.
+
+\begin{table}[t]
+\centering
+\caption{Summary of independent implementations and machine checks.}
+\label{tab:verification}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.33\textwidth}X}
+\toprule
+Verification item & Scale or result\\
+\midrule
+Independent graph generators &
+GENREG and nauty 2.9.3 \texttt{geng}\\
+Canonical graph-set comparison &
+$1,2,5,19,85,509,4060$ classes at orders $4$ through $16$; identical
+multisets at every order\\
+Solver A versus Solver B &
+Graph-by-graph agreement through $n=12$\\
+Independent optimum audit, $n=14$ &
+All 509 graphs: 418 have value 3 and 91 have value 4\\
+Independent optimum audit, $n=16$ &
+All 4060 graphs: 4 have value 3 and 4056 have value 4\\
+Lower-value exclusion &
+Every smaller endpoint-set cardinality was exhausted\\
+Solver C interaction audit &
+Definition-level interaction characterization checked on
+$K_4,K_{3,3}$, the cube, Petersen graph, and a 10-vertex prism\\
+Solver B versus Solver C &
+All 4681 census graphs plus 64 gate instances; zero discrepancies\\
+Current package test suite &
+12 tests passed\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The endpoint-set audit has its own \texttt{graph6} decoder and does not call the
+matching enumeration, acyclicity, maximality, or cache routines of Solvers A
+or B. Its vertex-set formulation and recursive perfect-matching test avoid
+the principal control flow shared by the two edge-based solvers.
+
+Solver C received separate definition-level interaction audits. Across the
+five standard cubic graphs in \Cref{tab:verification}, all tested edge subsets
+agree on matching feasibility, acyclicity, and maximality. The publication
+benchmark adds 64 gate instances and graph-by-graph agreement on the complete
+4681-graph census. These checks validate the implementation but, because
+Solver C uses the theorem-derived defect budget, they are not independent
+evidence for \Cref{thm:sharp-lower}.
+
+\subsection{Environment and reproducibility materials}
+
+The publication performance run used the environment in
+\Cref{tab:benchmark-environment}. Both solvers were single-threaded, no other
+benchmark jobs ran concurrently, and the same interpreter, graph objects,
+timer, and input order were used. The nauty generator was compiled with GCC
+under Ubuntu/WSL, while the timed solver calls ran natively on Windows. The
+separate endpoint-set proof audit used its previously frozen environment and
+intentionally did not import NetworkX.
+
+\begin{table}[t]
+\centering
+\caption{Environment of the publication Solver B--C benchmark.}
+\label{tab:benchmark-environment}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.31\textwidth}X}
+\toprule
+Item & Recorded value\\
+\midrule
+Operating system & Microsoft Windows 11, build 26200, 64 bit\\
+Processor & AMD Ryzen 7 7435H; 8 physical and 16 logical cores\\
+Memory & 15.74 GiB RAM\\
+Python & CPython 3.11.7, Anaconda 64 bit, MSC v.1916\\
+Graph library & NetworkX 3.1 \cite{Hagberg2008}\\
+Graph generator & nauty 2.9.3 \texttt{geng}; connected, minimum/maximum degree 3\\
+Execution & Single-threaded; \texttt{time.perf\_counter}; no concurrent jobs\\
+Repetitions & Five per complete layer for $n\leq12$; three for $n=14,16$\\
+Integrity & SHA-256 recorded for Solver B, Solver C, checker, and every census file\\
+Benchmark date & 19 August 2026\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The reproducibility materials record the raw and canonical graph collections,
+order-specific comparison reports, complete order-14 and order-16 optimum
+tables, the independent \texttt{graph6} decoder and endpoint-set checker,
+definition-level routines, Solvers A--C, structural certificates, equality
+constructors, tests, commands, software versions, source and census SHA-256
+values, raw repetition times, and all 4681 per-graph comparison rows.
+Source code is available at xxx.
+
+The lower bound and equality construction do not depend on the census. A
+single explicit graph with a valid matching certificate suffices to refute the
+empirical quarter benchmark, while the exact extremal formula follows entirely
+from \Cref{sec:blocking,sec:bound,sec:constructions}. Computation discovers
+counterexamples, generates structural hypotheses, and supplies
+machine-checkable certificates.
+
+\subsection{Threats to validity}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Graph-generation independence.}
+  GENREG and \texttt{geng} use different generation algorithms and produce
+  identical canonical multisets. They share \texttt{labelg} only as a
+  post-generation canonicalizer; neither generator uses it to decide which
+  graphs to emit.
+
+  \item \textbf{Optimum verification.}
+  At orders 14 and 16, the endpoint-set checker exhausts every smaller
+  cardinality and uses separate parsing, forest, perfect-matching, and
+  extension code. Reproducibility still depends on preserving source,
+  commands, inputs, and hashes.
+
+  \item \textbf{Proof dependence of Solver C.}
+  Solver C uses \eqref{eq:defect-budget}, which is derived from the main
+  theorem. Its agreement with Solver B is an implementation audit and an
+  algorithmic consequence, not a non-circular verification of the theorem.
+
+  \item \textbf{Performance scope.}
+  The full-census comparison is a paired single-machine benchmark, not a
+  portable performance ranking. Only one canonical graph ordering, one Python
+  and NetworkX stack, and one hardware platform were tested. Timings below a
+  millisecond are particularly sensitive to interpreter and timer noise.
+
+  \item \textbf{Equality-family censoring.}
+  Equality orders above 28 use one run, and Solver B timings at orders 46 and
+  56 are right-censored at 300 seconds. Their large structured-instance gains
+  are reported separately and are not substituted for census averages.
+
+  \item \textbf{Solver scale.}
+  The complete census stops at order 16, and no SAT or ILP certificate
+  generator has been applied to the full collection at larger orders. The
+  proof is independent of that scale limitation.
+
+  \item \textbf{Literature scope.}
+  Results for the maximum acyclic matching number do not settle the
+  minimum-maximal problem studied here. In particular the bound
+  $\maxacnum(G)\geq n/4$ of \cite{FurstRautenbach2018} bounds a parameter that
+  dominates $\acnum(G)$, so it neither implies nor contradicts the present
+  theorem; the census in \Cref{sec:census} shows that the two parameters do in
+  fact separate on cubic graphs.
+\end{itemize}
+
+\section{Discussion and open questions}
+\label{sec:discussion}
+
+The extremal formula resolves the fixed-order minimum over connected cubic
+graphs, and \Cref{cor:kernel} records the resulting fixed-parameter
+tractability for the solution-size parameter in this class. It does not settle
+the classical per-instance complexity or the behavior under stronger
+restrictions.
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Cubic complexity.}
+  What is the classical complexity of deciding $\acnum(G)\leq K$ on connected
+  cubic graphs? The known hardness for bipartite graphs of maximum degree six
+  and 4-regular graphs does not resolve this class.
+
+  \item \textbf{Exact exponential algorithms.}
+  Can the interaction-forest formulation yield a rigorously improved
+  worst-case exponential base, beyond the practical pruning used by Solver C?
+
+  \item \textbf{Kernel size.}
+  The reduction in \Cref{cor:kernel} is an identity kernel: yes-instances are
+  left unchanged. Can a strictly smaller kernel be obtained by genuine
+  reduction rules, and are there conditional or unconditional lower bounds on
+  the best possible kernel size?
+
+  \item \textbf{Bounded-width algorithms.}
+  Maximal acyclic matching feasibility and cardinality minimization are
+  expressible in $\mathrm{LinEMSO}_2$, so the meta-theorem of
+  \citet{Arnborg1991} gives fixed-parameter tractability for treewidth. Can one
+  obtain an explicit single-exponential dynamic program with matching ETH or
+  SETH lower bounds?
+
+  \item \textbf{Verifiable computation.}
+  Can compact SAT, ILP, or CP-SAT formulations produce independently
+  checkable infeasibility certificates and outperform generic edge-subset
+  enumeration?
+
+  \item \textbf{Restricted cubic classes.}
+  What are the best lower bounds for 3-edge-connected, bipartite, or
+  large-girth cubic graphs?
+
+  \item \textbf{Extremal classification.}
+  Can all graphs attaining $\ceil{(n-1)/5}$ be characterized, rather than one
+  explicit equality family? \Cref{rem:non-uniqueness} shows that at order 16
+  the extremal graphs already split into two structural types, distinguished
+  by whether the unique tree component of $H$ is the root $P_4$ or an isolated
+  vertex. A classification would have to enumerate the admissible
+  component-incidence trees realising $c=2t+1$.
+
+  \item \textbf{Higher regular degree.}
+  For fixed $r\geq 4$, what are the asymptotic constant and exact remainder
+  term of the analogous extremal function over connected $r$-regular graphs?
+\end{itemize}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+We determined the exact extremal behavior of minimum maximal acyclic matchings
+in connected cubic graphs. Analysis of the unmatched induced subgraph and its
+incidence with the forest induced by matching endpoints yields the sharp
+parity-sensitive bound, and explicit constructions attain it at every even
+order. The complete order-16 census exposes exactly four counterexamples to
+the quarter benchmark inherited from the maximum acyclic matching number;
+three of them are realised by the equality family and the fourth is not, so
+sharpness and classification are genuinely different questions. Independent
+graph generation and three theorem-independent exact search routes separate
+computational discovery from mathematical proof.
+
+The structural theorem also has direct algorithmic consequences. Contracting
+selected matching edges yields an exact edge-interaction forest, the counting
+proof supplies a defect budget of at most four at the first feasible target,
+and deciding $\acnum(G)\leq K$ on connected cubic graphs is fixed-parameter
+tractable because every yes-instance has at most $5K+1$ vertices. These
+consequences strengthen the computational-combinatorics aspect of the result
+without changing the central conclusion:
+\[
+  f_3(n)=\ceil{\frac{n-1}{5}}
+  \qquad\text{for every even }n\geq 4.
+\]
+
+\appendix
+\section{Solver C benchmark details}
+\label{app:benchmark}
+
+We compared the theorem-independent bitset solver (Solver~B) with Solver~C on
+the complete census of $4681$ non-isomorphic connected simple cubic graphs of
+orders $4,6,\ldots,16$. The census was generated with nauty 2.9.3 and its
+layer sizes were checked as $1,2,5,19,85,509,$ and $4060$. Before timing, the
+implementations were required to agree on $64$ gate instances: ten standard
+or prism graphs, the four order-$16$ counterexamples, and $50$ fixed-seed
+random connected cubic graphs. Every returned witness was also checked by the
+definition-level maximal-acyclic-matching routine. The gate and the complete
+census had zero discrepancies.
+
+Graphs were decoded before each timed stage. Each solver received the same
+in-memory graphs in the same canonical \texttt{graph6} order. After an untimed
+warm-up, every complete layer through order $12$ was repeated five times and
+the order-$14$ and order-$16$ layers were repeated three times. Solver order
+was alternated between repetitions, garbage collection was disabled only
+within individual solver calls, and \texttt{time.perf\_counter} measured
+solver time. \Cref{tab:solverc-bench} reports medians of whole-layer totals.
+The search columns use the number of complete candidates examined by each
+implementation; Solver~C recursion nodes are retained separately in the
+archived per-graph data and are not substituted for this common leaf-level
+measure.
+
+The whole-census aggregate in \Cref{tab:solverc-bench} is a sum of the seven
+layer medians. Per-graph ratios answer a different question: across all $4681$
+graphs, their median and geometric mean are $4.41\times$ and $3.81\times$.
+At order $16$ they are $4.58\times$ and $4.46\times$, with an interquartile
+range of $4.00$--$5.11\times$ and a range of $1.08$--$8.22\times$. Solver~C
+is faster on every order-$16$ graph. It is slower on $127$ smaller graphs,
+all of order at most $14$, where interpreter, preprocessing, and pruning
+overhead are large relative to the underlying search.
+
+Grouping within an order is consistent with the intended role of the defect
+budget. At order $10$ the geometric-mean speedups for defect budgets one and
+at least five are $1.09\times$ and $0.70\times$; at order $14$ the
+corresponding figures for budgets two and at least five are $1.44\times$ and
+$1.14\times$. Only four order-$16$ census graphs have zero defect, so their
+$5.23\times$ geometric-mean speedup is suggestive rather than a basis for a
+broad claim.
+
+The complete census is the primary performance experiment. Separately, we
+tested the equality construction at orders
+$16,20,24,26,28,32,36,46,$ and $56$ with a common $300$-second timeout.
+Orders through $28$ used three repetitions and report medians; larger orders
+used one run. \Cref{tab:equality-performance} records these structured
+scalability results.
+
+\begin{table}[t]
+\centering
+\caption{Equality-family comparison under a common $300$-second timeout. The
+column $D$ is the defect budget $\min\{k-1,5k+1-n\}$ of
+\eqref{eq:defect-budget}; rows with $D=0$ use the specialised zero-defect
+routine. Ratios above $100$ are reported only as magnitudes. A dash denotes a
+speedup censored by a Solver~B timeout.}
+\label{tab:equality-performance}
+\small
+\begin{tabular}{rrrrrrl}
+\toprule
+$n$ & $\acnum(G)$ & $D$ & B time (s) & C time (s) & Speedup & Status\\
+\midrule
+16 & 3  & 0 & 0.0143   & 0.00525 & $2.7\times$      & both solved\\
+20 & 4  & 1 & 0.0965   & 0.02424 & $4.0\times$      & both solved\\
+24 & 5  & 2 & 0.8888   & 0.15152 & $5.9\times$      & both solved\\
+26 & 5  & 0 & 1.5255   & 0.01000 & ${>}10^{2}\times$ & both solved\\
+28 & 6  & 3 & 8.4682   & 0.96229 & $8.8\times$      & both solved\\
+32 & 7  & 4 & 89.2176  & 6.44114 & $13.9\times$     & both solved\\
+36 & 7  & 0 & 290.5094 & 0.01720 & ${>}10^{4}\times$ & both solved\\
+46 & 9  & 0 & timeout  & 0.02144 & --               & B timeout\\
+56 & 11 & 0 & timeout  & 0.02971 & --               & B timeout\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The five rows with $D=0$ are exactly the orders with $n=5k+1$, namely
+$n\equiv 6\pmod{10}$, where the budget of \eqref{eq:defect-budget} collapses
+and Solver~C enters the specialised domination routine. On those rows
+Solver~C takes between $0.005$ and $0.030$ seconds across the whole range
+$16\leq n\leq 56$, whereas Solver~B grows from $0.014$ seconds to a timeout.
+The extreme ratios therefore track the blow-up of the unguided baseline rather
+than any variation in Solver~C, which is also why the same zero-defect mode
+yields $2.7\times$ at order $16$ and more than $10^4\times$ at order $36$.
+These are structured members of the equality family, not a random sample, and
+the ratios must not be read as average census speedups.
+
+Finally, five Solver~C variants were run three times on a deterministic,
+stratified sample of $100$ order-$16$ graphs. On the four zero-defect graphs,
+replacing the specialized zero-defect routine by the generic search increased
+median search time by approximately $9.7\times$, while disabling the
+theorem-derived budget increased it by approximately $15.2\times$. Failed-state
+memoization had no measurable benefit on these four found-solution searches.
+On the remaining $96$ graphs, removing near-leaf maximality pruning increased
+the total recursion-node count from $1853$ to $3268$, although the additional
+pruning test did not improve median microbenchmark time. These ablations
+identify mechanisms, not portable worst-case guarantees.
+
+\begin{thebibliography}{99}
+
+\bibitem[Arnborg et al.(1991)Arnborg, Lagergren, and Seese]{Arnborg1991}
+Arnborg S, Lagergren J, Seese D (1991) Easy problems for tree-decomposable
+graphs. Journal of Algorithms 12:308--340.
+\url{https://doi.org/10.1016/0196-6774(91)90006-K}
+
+\bibitem[Cameron(1989)]{Cameron1989}
+Cameron K (1989) Induced matchings. Discrete Applied Mathematics 24:97--102.
+\url{https://doi.org/10.1016/0166-218X(92)90275-F}
+
+\bibitem[Chaudhary and Panda(2021)]{ChaudharyPanda2021}
+Chaudhary J, Panda BS (2021) On the complexity of minimum maximal uniquely
+restricted matching. Theoretical Computer Science 882:15--28.
+\url{https://doi.org/10.1016/j.tcs.2021.05.036}
+
+\bibitem[Chaudhary and Zehavi(2025)]{Zehavi2025}
+Chaudhary J, Zehavi M (2025) $p$-matchings parameterized by treewidth.
+SIAM Journal on Discrete Mathematics 39:1280--1311.
+\url{https://doi.org/10.1137/23M160013X}
+
+\bibitem[Chaudhary et al.(2024)Chaudhary, Mishra, and Panda]{Chaudhary2024}
+Chaudhary J, Mishra S, Panda BS (2024) On the complexity of minimum maximal
+acyclic matchings. Journal of Combinatorial Optimization 48:10.
+\url{https://doi.org/10.1007/s10878-024-01200-3}
+
+\bibitem[Chaudhary et al.(2025)Chaudhary, Mishra, and Panda]{Chaudhary2025}
+Chaudhary J, Mishra S, Panda BS (2025) Minimum maximal acyclic matching in
+proper interval graphs. Discrete Applied Mathematics 360:414--427.
+\url{https://doi.org/10.1016/j.dam.2024.10.012}
+
+\bibitem[Edmonds(1965)]{Edmonds1965}
+Edmonds J (1965) Paths, trees, and flowers. Canadian Journal of Mathematics
+17:449--467. \url{https://doi.org/10.4153/CJM-1965-045-4}
+
+\bibitem[F{\"u}rst and Rautenbach(2018)]{FurstRautenbach2018}
+F{\"u}rst M, Rautenbach D (2018) A lower bound on the acyclic matching number
+of subcubic graphs. Discrete Mathematics 341(8):2353--2358.
+\url{https://doi.org/10.1016/j.disc.2018.05.010}
+
+\bibitem[F{\"u}rst and Rautenbach(2019)]{Furst2019}
+F{\"u}rst M, Rautenbach D (2019) On some hard and some tractable cases of the
+maximum acyclic matching problem. Annals of Operations Research 279:291--300.
+\url{https://doi.org/10.1007/s10479-019-03311-1}
+
+\bibitem[Goddard et al.(2005)Goddard, Hedetniemi, Hedetniemi, and Laskar]{Goddard2005}
+Goddard W, Hedetniemi SM, Hedetniemi ST, Laskar R (2005) Generalized
+subgraph-restricted matchings in graphs. Discrete Mathematics 293:129--138.
+\url{https://doi.org/10.1016/j.disc.2004.08.027}
+
+\bibitem[Golumbic et al.(2001)Golumbic, Hirst, and Lewenstein]{Golumbic2001}
+Golumbic MC, Hirst T, Lewenstein M (2001) Uniquely restricted matchings.
+Algorithmica 31:139--154. \url{https://doi.org/10.1007/s00453-001-0004-z}
+
+\bibitem[Hagberg et al.(2008)Hagberg, Schult, and Swart]{Hagberg2008}
+Hagberg AA, Schult DA, Swart PJ (2008) Exploring network structure, dynamics,
+and function using NetworkX. In: Proceedings of the 7th Python in Science
+Conference, pp 11--15
+
+\bibitem[Lov{\'a}sz and Plummer(2009)]{LovaszPlummer2009}
+Lov{\'a}sz L, Plummer MD (2009) Matching Theory. American Mathematical
+Society, Providence
+
+\bibitem[McKay and Piperno(2014)]{McKayPiperno2014}
+McKay BD, Piperno A (2014) Practical graph isomorphism, II. Journal of
+Symbolic Computation 60:94--112. \url{https://doi.org/10.1016/j.jsc.2013.09.003}
+
+\bibitem[Meringer(1999)]{Meringer1999}
+Meringer M (1999) Fast generation of regular graphs and construction of cages.
+Journal of Graph Theory 30:137--146.
+\url{https://doi.org/10.1002/(SICI)1097-0118(199902)30:2<137::AID-JGT7>3.0.CO;2-G}
+
+\bibitem[Panda and Chaudhary(2023)]{Panda2023}
+Panda BS, Chaudhary J (2023) Acyclic matching in some subclasses of graphs.
+Theoretical Computer Science 943:36--49.
+\url{https://doi.org/10.1016/j.tcs.2022.12.008}
+
+\bibitem[Yannakakis and Gavril(1980)]{Yannakakis1980}
+Yannakakis M, Gavril F (1980) Edge dominating sets in graphs. SIAM Journal on
+Applied Mathematics 38:364--372. \url{https://doi.org/10.1137/0138030}
+
+\end{thebibliography}
+
+\section*{Statements and Declarations}
+
+\paragraph{Funding.}
+The author declares that no funds, grants, or other support were received
+during the preparation of this manuscript.
+
+\paragraph{Competing interests.}
+The author has no relevant financial or non-financial interests to disclose.
+
+\paragraph{Author contributions.}
+Hao Tang conceived the study, implemented the algorithms, designed and
+conducted the experiments, performed the structural analysis, developed the
+proofs, and wrote the manuscript.
+
+\paragraph{Data and code availability.}
+Source code is available at xxx.
+
+\paragraph{Use of AI-assisted tools.}
+AI-assisted tools were used for exploratory prompts, code review, and language
+polishing. They were not listed as authors and did not assume responsibility
+for mathematical or computational claims. The author takes full
+responsibility for the final manuscript.
+
+\end{document}

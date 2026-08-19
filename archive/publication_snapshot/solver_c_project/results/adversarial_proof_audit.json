@@ -1,0 +1,26 @@
+{
+  "local_component_audit": {
+    "atlas_connected_subcubic_graphs": 113,
+    "abstract_label_assignments_checked": 164042,
+    "valid_blocking_assignments": 154,
+    "status": "pass"
+  },
+  "all_order_construction_audit": {
+    "orders_checked": 149,
+    "range": "4..300 even",
+    "family_counts": {
+      "K4": 1,
+      "all_orders_extremal": 112,
+      "cube": 1,
+      "hexagonal_prism": 1,
+      "odd_max_base": 29,
+      "path_cycle": 5
+    },
+    "status": "pass"
+  },
+  "integer_optimization_audit": {
+    "k_checked": 500,
+    "status": "pass"
+  },
+  "overall_status": "pass"
+}

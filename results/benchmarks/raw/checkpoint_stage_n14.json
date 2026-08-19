@@ -1,0 +1,17 @@
+{
+  "n": 14,
+  "graph_count": 509,
+  "repetitions": 3,
+  "solver_b_batch_seconds": [
+    5.972700700000132,
+    6.0683105000007345,
+    5.961093400001118
+  ],
+  "solver_c_batch_seconds": [
+    4.890069400000357,
+    4.7926047000000835,
+    4.964765400000033
+  ],
+  "solver_b_batch_median_seconds": 5.972700700000132,
+  "solver_c_batch_median_seconds": 4.890069400000357
+}

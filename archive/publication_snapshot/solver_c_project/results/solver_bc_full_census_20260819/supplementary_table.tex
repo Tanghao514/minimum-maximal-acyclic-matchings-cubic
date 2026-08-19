@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\caption{Equality-family comparison. A common 300-second timeout was applied to both solvers. Orders through 28 use three repetitions and report medians; larger orders use one run.}
+\label{tab:solver-bc-equality}
+\small
+\begin{tabular}{rrrrrr}
+\toprule
+$n$ & $\mu(G)$ & B time (s) & C time (s) & speedup & status \\
+\midrule
+16 & 3  & 0.0143 & 0.00525 & 2.72 & both solved \\
+20 & 4  & 0.0965 & 0.02424 & 3.98 & both solved \\
+24 & 5  & 0.8888 & 0.15152 & 5.87 & both solved \\
+26 & 5  & 1.5255 & 0.01000 & 152.57 & both solved \\
+28 & 6  & 8.4682 & 0.96229 & 8.80 & both solved \\
+32 & 7  & 89.2176 & 6.44114 & 13.85 & both solved \\
+36 & 7  & 290.5094 & 0.01720 & 16,894.01 & both solved \\
+46 & 9  & timeout & 0.02144 & -- & B timeout \\
+56 & 11 & timeout & 0.02971 & -- & B timeout \\
+\bottomrule
+\end{tabular}
+\end{table}

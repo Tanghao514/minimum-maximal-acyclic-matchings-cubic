@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "minimum-maximal-acyclic-matchings-cubic"
+version = "1.0.0"
+description = "Exact solvers, cubic graph censuses, and certificates for minimum maximal acyclic matchings."
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = ["networkx==3.1"]
+
+[project.optional-dependencies]
+test = ["pytest==7.4.0"]
+
+[tool.setuptools]
+packages = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+

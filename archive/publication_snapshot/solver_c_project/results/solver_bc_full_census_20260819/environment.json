@@ -1,0 +1,41 @@
+{
+  "experiment_timestamp_utc": "2026-08-19T05:02:52.445660+00:00",
+  "operating_system": "Windows-10-10.0.26200-SP0",
+  "processor": "AMD Ryzen 7 7435H (AMD64 Family 25 Model 68 Stepping 1)",
+  "physical_cores": 8,
+  "logical_cores": 16,
+  "ram_bytes": 16902819840,
+  "ram_gib": 15.74,
+  "python_version": "3.11.7 | packaged by Anaconda, Inc. | (main, Dec 15 2023, 18:05:47) [MSC v.1916 64 bit (AMD64)]",
+  "python_implementation": "CPython",
+  "networkx_version": "3.1",
+  "compiler": "MSC v.1916 64 bit (AMD64)",
+  "threading": "single-threaded Python solver calls; no concurrent benchmark jobs",
+  "timer": "time.perf_counter",
+  "nauty_version": "2.9.3",
+  "nauty_generator": "geng -c -q -d3 -D3 n (3n/2)",
+  "source_sha256": {
+    "src\\exact_solver.py": "2418e9a19ee04aa11276c73ce4d5a48f140bbfb1d9331fbdb2fd65eee3536b51",
+    "src\\solver_c.py": "b1b76bab4c6dd70d1060d4bf4220604e12e11933ad957ec15ba73c97d356e199",
+    "src\\acyclic_matching.py": "cde86bf3ee10b057ee6bdbf4f4f2c5c73634fa1161bf71d0f439c83789fa8970"
+  },
+  "census_sha256": {
+    "connected_cubic_n10.g6": "716d2bf7bcd625dd472992fe1f058473a69ad8bb9ccfd4036156a0a316a1feb3",
+    "connected_cubic_n12.g6": "3659b3cf39481c40f8bfb2515f978eaa46b770c71f9500d31197436878155b27",
+    "connected_cubic_n14.g6": "efac61759784a8a73305b746838dc0db6c41c4812644b738f90356398fabffd4",
+    "connected_cubic_n16.g6": "b3610f3eab739083ece9fc9c5d896708de5345b8b22104e13425bfcb88b9df5e",
+    "connected_cubic_n4.g6": "62073900de6d9451c02333f80b3c4de1105edb4559989fee6cfa91c1365d102b",
+    "connected_cubic_n6.g6": "b0aeb28fe754b6ae6ce6b0e1ea4feecea20314cc62a9796789954b4fd09e40ab",
+    "connected_cubic_n8.g6": "545cfd83233b4bd966ef0c483ddc8bec4099dcf451cf9d2e2013e46c0e641262"
+  },
+  "expected_census_counts": {
+    "4": 1,
+    "6": 2,
+    "8": 5,
+    "10": 19,
+    "12": 85,
+    "14": 509,
+    "16": 4060
+  },
+  "total_core_graphs": 4681
+}

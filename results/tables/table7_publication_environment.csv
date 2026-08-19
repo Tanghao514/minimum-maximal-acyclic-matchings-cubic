@@ -1,0 +1,10 @@
+item,recorded_value
+Operating system,Windows-10-10.0.26200-SP0
+Processor,AMD Ryzen 7 7435H (AMD64 Family 25 Model 68 Stepping 1)
+Cores,8 physical; 16 logical
+Memory,15.74 GiB RAM
+Python,"3.11.7 | packaged by Anaconda, Inc. | (main, Dec 15 2023, 18:05:47) [MSC v.1916 64 bit (AMD64)]"
+Graph library,NetworkX 3.1
+Graph generator,nauty 2.9.3 geng; geng -c -q -d3 -D3 n (3n/2)
+Execution,single-threaded Python solver calls; no concurrent benchmark jobs; time.perf_counter
+Benchmark date,19 August 2026

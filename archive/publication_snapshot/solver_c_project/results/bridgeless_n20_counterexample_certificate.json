@@ -1,0 +1,180 @@
+{
+  "graph6": "S`?G?Co_K?g@O@B?e??C@?_C@?GA?GW?C",
+  "adjacency": {
+    "0": [
+      1,
+      9,
+      10
+    ],
+    "1": [
+      0,
+      11,
+      12
+    ],
+    "2": [
+      3,
+      8,
+      14
+    ],
+    "3": [
+      2,
+      8,
+      14
+    ],
+    "4": [
+      5,
+      13,
+      19
+    ],
+    "5": [
+      4,
+      13,
+      19
+    ],
+    "6": [
+      7,
+      15,
+      16
+    ],
+    "7": [
+      6,
+      17,
+      18
+    ],
+    "8": [
+      2,
+      3,
+      9
+    ],
+    "9": [
+      0,
+      8,
+      10
+    ],
+    "10": [
+      0,
+      9,
+      11
+    ],
+    "11": [
+      1,
+      10,
+      12
+    ],
+    "12": [
+      1,
+      11,
+      13
+    ],
+    "13": [
+      4,
+      5,
+      12
+    ],
+    "14": [
+      2,
+      3,
+      15
+    ],
+    "15": [
+      6,
+      14,
+      16
+    ],
+    "16": [
+      6,
+      15,
+      17
+    ],
+    "17": [
+      7,
+      16,
+      18
+    ],
+    "18": [
+      7,
+      17,
+      19
+    ],
+    "19": [
+      4,
+      5,
+      18
+    ]
+  },
+  "matching": [
+    [
+      0,
+      1
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      6,
+      7
+    ]
+  ],
+  "properties": {
+    "n": 20,
+    "m": 30,
+    "connected": true,
+    "cubic": true,
+    "bridges": [],
+    "edge_connectivity": 2,
+    "vertex_connectivity": 2,
+    "girth": 3,
+    "diameter": 7,
+    "bipartite": false
+  },
+  "independent_size_search_counts": {
+    "0": [
+      1,
+      1,
+      0
+    ],
+    "1": [
+      30,
+      30,
+      0
+    ],
+    "2": [
+      375,
+      351,
+      0
+    ],
+    "3": [
+      2532,
+      2014,
+      0
+    ]
+  },
+  "structure": {
+    "n": 20,
+    "k": 4,
+    "s_size": 8,
+    "u_size": 12,
+    "f_components": 4,
+    "h_tree_components": 2,
+    "h_cycle_components": 0,
+    "h_component_types": [
+      "P6",
+      "P6"
+    ],
+    "e_f": 4,
+    "e_h": 10,
+    "e_su": 16,
+    "identity_u_rhs": 12,
+    "identity_n_rhs": 20,
+    "incidence_edges_distinct": 6,
+    "max_tree_component_f_neighbors": 3,
+    "bound_c_le_2t_plus_1": true,
+    "parity_upper_bound_n": 20,
+    "universal_lower_bound": 4
+  }
+}
