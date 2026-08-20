@@ -49,5 +49,5 @@ GENREG artifacts are unavailable. The gaps are explicit in
 
 See `MISSING_FOR_RELEASE.md` for the critical independent endpoint-set audit and
 GENREG raw/comparison workflow, the noncritical missing equality raw repetition
-arrays, the manuscript URL placeholder, and the external Springer class files.
-
+arrays, and the external Springer class files. The manuscript repository URL
+has been resolved in `paper/main_jco.tex`.

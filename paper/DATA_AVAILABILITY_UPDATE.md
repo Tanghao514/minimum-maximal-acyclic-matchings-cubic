@@ -1,11 +1,11 @@
-# Proposed Data and code availability statement
+# Data and code availability statement
 
-Use after confirming that the GitHub repository is public:
+The public repository URL is now included in `paper/main_jco.tex`:
 
 > Source code, graph censuses, computational certificates, and per-graph result
 > tables are publicly available at
 > https://github.com/Tanghao514/minimum-maximal-acyclic-matchings-cubic.
 
-No Zenodo DOI is claimed. If a frozen Zenodo release is created later, append
-its real DOI only after deposition is complete.
-
+This statement matches the submitted manuscript. No Zenodo DOI is claimed. If
+a frozen Zenodo release is created later, append its real DOI only after
+deposition is complete.

@@ -56,12 +56,13 @@ Required author action, if available: provide the original console log or raw
 per-repetition file. A new rerun may be added as a separate validation artifact
 but must not be labeled as the missing publication timings.
 
-## 4. Final manuscript availability URL — administrative
+## 4. Final manuscript availability URL — resolved
 
-The exact final PDF and LaTeX snapshot contain `Source code is available at
-xxx.` They are preserved byte-for-byte and have not been silently edited.
-After the GitHub repository is public, use the sentence in
-`paper/DATA_AVAILABILITY_UPDATE.md` in the next manuscript revision.
+The public repository URL and complete data and code availability statement
+have been inserted in `paper/main_jco.tex`. The preserved PDF remains the
+earlier release snapshot; the submitted manuscript contains the corrected
+statement recorded in `paper/DATA_AVAILABILITY_UPDATE.md`. This item is
+resolved.
 
 ## 5. Springer LaTeX class files — external
 
@@ -70,4 +71,3 @@ redistributed in the release-cleanup tree because they are third-party template
 material. Obtain the current authorized JCO/Springer template from the journal.
 The exact compiled PDF is included, so source compilation is not required to
 verify the paper's archived appearance.
-

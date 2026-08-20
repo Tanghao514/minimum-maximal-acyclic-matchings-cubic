@@ -27,9 +27,8 @@ that hardware-dependent wall times will be identical.
 | Solver C ablation | `results/ablations/solver_c_ablation_complete.csv` | `python scripts/verify_paper_numbers.py` | Complete, including 500 raw rows |
 | All seven census files | `data/census/canonical/*.g6` | `python scripts/verify_census_counts.py` | Complete |
 | Source/census hashes | publication environment and hash manifests | `python scripts/verify_hashes.py` | Complete |
-| Final manuscript | `paper/*.pdf`, `paper/main_jco.tex` | SHA-256 manifest; visually checked during release | Complete; URL placeholder retained |
+| Final manuscript | `paper/*.pdf`, `paper/main_jco.tex` | SHA-256 manifest; visually checked during release | Complete; public repository URL inserted in source |
 
 The three figures are hand-written TikZ in `paper/main_jco.tex`; they were not
 generated from the timing CSVs. `figures/source/README.md` records the exact
 source locations.
-
