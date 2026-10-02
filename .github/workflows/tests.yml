@@ -17,4 +17,14 @@ jobs:
       - run: python -m pytest -q
       - run: python scripts/verify_counterexamples.py
       - run: python scripts/verify_census_counts.py
+      - run: python scripts/verify_post_submission.py
       - run: python scripts/verify_hashes.py
+
+  independent-endpoint-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.7"
+      - run: python scripts/run_endpoint_audit.py --output reproduced/ci-endpoint-audit

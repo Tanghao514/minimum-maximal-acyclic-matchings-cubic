@@ -46,6 +46,7 @@ def main() -> None:
     run("scripts/verify_structural_certificates.py")
     run("scripts/reproduce_tables/reproduce_all.py")
     run("scripts/verify_paper_numbers.py")
+    run("scripts/verify_post_submission.py")
     run("scripts/verify_hashes.py")
     compare_small_graphs()
     print("RELEASE VERIFICATION PASSED")
@@ -53,4 +54,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

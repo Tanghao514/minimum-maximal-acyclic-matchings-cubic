@@ -15,6 +15,7 @@ env/
 build/
 dist/
 tmp/
+/reproduced/
 *.aux
 *.bbl
 *.blg
@@ -23,4 +24,3 @@ tmp/
 *.log
 *.out
 *.synctex.gz
-

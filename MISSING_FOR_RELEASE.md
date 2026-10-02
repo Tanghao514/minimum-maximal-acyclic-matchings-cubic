@@ -1,4 +1,21 @@
-# Missing publication artifacts
+# Missing original publication artifacts and new verification
+
+## Status on 2 October 2026
+
+The historical files listed below remain missing. New, explicitly dated
+supplementary verification now supports the two principal computational claims:
+
+- A standalone endpoint-set audit recomputed all 4,681 optima, without the
+  theorem lower bound or imports from Solvers A/B/C: zero discrepancies.
+- Fresh GENREG and geng runs produced the same canonical multisets as each
+  other and the preserved census at all seven orders: 4,681 classes.
+
+Source, raw output, lower-cardinality counts, witnesses, input/build hashes,
+and commands are linked from [verification/README.md](verification/README.md).
+These are **new post-submission runs**, not recovered historical artifacts.
+They do not establish the provenance of the original reported runs.
+
+## Historical missing-file inventory
 
 This file is intentionally explicit. The items below were described by the
 final manuscript but were not found in the supplied project, adjacent working
@@ -19,9 +36,10 @@ Missing:
 The manuscript reports that every even endpoint set was considered in
 increasing cardinality, `G[S]` was checked as a forest, a perfect matching of
 `G[S]` was sought, and every two-vertex extension was tested directly. It also
-reports 509 audited order-14 graphs and 4,060 audited order-16 graphs. Those
-claims remain claims in the manuscript, not independently rerunnable artifacts
-in this repository.
+reports 509 audited order-14 graphs and 4,060 audited order-16 graphs. The
+historical audit itself is not rerunnable from its original files. The same
+census optima are now independently reproduced by the new auditor described
+above, whose full source and outputs are included.
 
 Required author action: provide the original audit directory or a frozen
 archive with source, inputs, raw outputs, environment, and hashes.
@@ -37,8 +55,9 @@ Missing:
 - GENREG-side hashes.
 
 The complete, independently generated nauty 2.9.3 `geng` census is present and
-verifiable. This supports the Solver B/C experiment, but it does not recreate
-the manuscript's dual-generator evidence.
+verifiable. In addition, the new generator audit reproduces the graph-set
+agreement with fresh GENREG/geng builds and runs. It does not recover the
+historical generator records.
 
 Required author action: provide the original GENREG archive and comparison
 script/log. Do not substitute a newly downloaded generator run and call it the

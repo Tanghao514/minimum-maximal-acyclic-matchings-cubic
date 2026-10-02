@@ -38,10 +38,18 @@ files, exact version/build, commands, and comparison log were absent from the
 supplied package. They are listed in `MISSING_FOR_RELEASE.md`. This repository
 does not invent a command and label it as the publication invocation.
 
+A new October 2026 rerun builds hash-pinned GENREG trunk files and nauty 2.9.3,
+regenerates every layer, and compares both outputs with the preserved census.
+It includes raw ASCII/graph6 outputs, canonical-class bijections, source
+URLs/hashes, build logs, compiler information, and executable hashes.
+See [the full guide](../verification/README.md) and the
+[toolchain record](../results/post_submission/2026-10-02/generator_audit/toolchain.json).
+
 ## Reproducibility boundary
 
 The preserved `geng` files are sufficient to reproduce the complete Solver B/C
-census. Regenerating the dual-generator comparison additionally requires the
-missing GENREG snapshot. Graph labels and output order are generator-dependent;
-isomorphism-class multisets must be canonicalized before comparison.
-
+census. The original dual-generator run cannot be reproduced without its missing
+records. A fresh independent comparison can now be reproduced with
+`scripts/prepare_verification_tools.py` and `scripts/run_generator_audit.py`.
+Graph labels and output order are generator-dependent; isomorphism-class
+multisets must be canonicalized before comparison.

@@ -1,0 +1,131 @@
+{
+  "kind": "new_post_submission_verification",
+  "started_utc": "2026-10-02T14:11:21.154721+00:00",
+  "status": "pass",
+  "source": "verification/endpoint_audit.cpp",
+  "source_sha256": "145bf9de9e9feaea1cfb593e0650b351f3c6fcbd7a33bd4c0f1fadd1c24a5276",
+  "runner_sha256": "7eb37592c67d50871536b53ec8801a38f0bcc30d1e4013242c943dfc360f093f",
+  "theorem_pruning": false,
+  "search_starts_at_k": 0,
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "orders": [
+    {
+      "n": 4,
+      "graphs": 1,
+      "histogram": {
+        "1": 1
+      },
+      "input_sha256": "62073900de6d9451c02333f80b3c4de1105edb4559989fee6cfa91c1365d102b",
+      "output_sha256": "dfb23c74e9e1c76b9b62626a03021e36ff07885beae206376a29dea235c79bbb",
+      "discrepancies": 0,
+      "all_smaller_cardinalities_exhausted": true,
+      "wall_seconds": 0.02067633099999977,
+      "tested_endpoint_sets": 2
+    },
+    {
+      "n": 6,
+      "graphs": 2,
+      "histogram": {
+        "1": 2
+      },
+      "input_sha256": "b0aeb28fe754b6ae6ce6b0e1ea4feecea20314cc62a9796789954b4fd09e40ab",
+      "output_sha256": "9515d89145b1d14f39b81993be96a03270cc81caa48ee5a8aff89e05f03e291e",
+      "discrepancies": 0,
+      "all_smaller_cardinalities_exhausted": true,
+      "wall_seconds": 0.024110740999999436,
+      "tested_endpoint_sets": 10
+    },
+    {
+      "n": 8,
+      "graphs": 5,
+      "histogram": {
+        "2": 5
+      },
+      "input_sha256": "545cfd83233b4bd966ef0c483ddc8bec4099dcf451cf9d2e2013e46c0e641262",
+      "output_sha256": "c9d3d029cca07cdfb3217a554bb1b037d3ffe04100c405b9f86282f35332c561",
+      "discrepancies": 0,
+      "all_smaller_cardinalities_exhausted": true,
+      "wall_seconds": 0.02090717499999961,
+      "tested_endpoint_sets": 168
+    },
+    {
+      "n": 10,
+      "graphs": 19,
+      "histogram": {
+        "2": 14,
+        "3": 5
+      },
+      "input_sha256": "716d2bf7bcd625dd472992fe1f058473a69ad8bb9ccfd4036156a0a316a1feb3",
+      "output_sha256": "8ac8046c9e5e74efb3036e32095b48c4127555af00d4134af43610649bfa080e",
+      "discrepancies": 0,
+      "all_smaller_cardinalities_exhausted": true,
+      "wall_seconds": 0.02350433400000007,
+      "tested_endpoint_sets": 2868
+    },
+    {
+      "n": 12,
+      "graphs": 85,
+      "histogram": {
+        "3": 85
+      },
+      "input_sha256": "3659b3cf39481c40f8bfb2515f978eaa46b770c71f9500d31197436878155b27",
+      "output_sha256": "4fb4b4a3e44fc6626439e7ca5d5f5ef0b27b1e0b9642cd4904baef606e24dce5",
+      "discrepancies": 0,
+      "all_smaller_cardinalities_exhausted": true,
+      "wall_seconds": 0.030761442000000194,
+      "tested_endpoint_sets": 53134
+    },
+    {
+      "n": 14,
+      "graphs": 509,
+      "histogram": {
+        "3": 418,
+        "4": 91
+      },
+      "input_sha256": "efac61759784a8a73305b746838dc0db6c41c4812644b738f90356398fabffd4",
+      "output_sha256": "37d8b090bac1e7d682efdcf6e43c67da9cf3f7b24761ece9ca3e7d5d6dcec86c",
+      "discrepancies": 0,
+      "all_smaller_cardinalities_exhausted": true,
+      "wall_seconds": 0.20031589400000005,
+      "tested_endpoint_sets": 1247983
+    },
+    {
+      "n": 16,
+      "graphs": 4060,
+      "histogram": {
+        "3": 4,
+        "4": 4056
+      },
+      "input_sha256": "b3610f3eab739083ece9fc9c5d896708de5345b8b22104e13425bfcb88b9df5e",
+      "output_sha256": "ebde8f506e6268f853077797313c6056cc2ca7ccb0c8d7bb57ce9c108563d31e",
+      "discrepancies": 0,
+      "all_smaller_cardinalities_exhausted": true,
+      "wall_seconds": 5.610011158,
+      "tested_endpoint_sets": 44056782
+    }
+  ],
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "build_command": [
+    "g++",
+    "-std=c++17",
+    "-O2",
+    "-Wall",
+    "-Wextra",
+    "-pedantic",
+    "verification/endpoint_audit.cpp",
+    "-o",
+    "<temporary>/endpoint_audit"
+  ],
+  "executable_sha256": "9fe8702a1ddff96533fd82704bd61bdb2a2baed7393474e0e28459cef91a13e5",
+  "gate": {
+    "status": "pass",
+    "graphs": 1114,
+    "all_labeled_orders_0_to_5": 1100,
+    "additional_graphs": 14,
+    "malformed_inputs_rejected": 6,
+    "reference": "independent Python edge-subset enumeration and BFS forest check",
+    "seconds": 0.08119368900000001
+  },
+  "finished_utc": "2026-10-02T14:11:29.764792+00:00"
+}

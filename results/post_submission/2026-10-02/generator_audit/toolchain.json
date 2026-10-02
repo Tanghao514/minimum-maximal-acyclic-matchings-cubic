@@ -1,0 +1,85 @@
+{
+  "kind": "post_submission_external_toolchain",
+  "recorded_utc": "2026-10-02T14:16:40.776162+00:00",
+  "genreg": "hash-pinned GENREG original trunk files (upstream last file change r1, 2015-06-21)",
+  "nauty": "2.9.3",
+  "sources": [
+    {
+      "name": "gendef.h",
+      "url": "https://svn.code.sf.net/p/genreg/code/trunk/gendef.h?p=1",
+      "sha256": "8cf36cf5d0d0a550c1c2c749945036705b850a4213e56b52a04fb3e2ce6fc893"
+    },
+    {
+      "name": "genreg.c",
+      "url": "https://svn.code.sf.net/p/genreg/code/trunk/genreg.c?p=1",
+      "sha256": "5831e836d010ceef51ef8e3ae69c2476dfde838b89e66b2a509ec692739a06fd"
+    },
+    {
+      "name": "main.c",
+      "url": "https://svn.code.sf.net/p/genreg/code/trunk/main.c?p=1",
+      "sha256": "45ab087ef5be42055353d0f0e552313f46f143f5b87e7b208c44025ec53d5516"
+    },
+    {
+      "name": "makefile",
+      "url": "https://svn.code.sf.net/p/genreg/code/trunk/makefile?p=1",
+      "sha256": "0360d71e48c0bc6bc15cc414fad8380e5699e3964828108d70286a1077b70e88"
+    },
+    {
+      "name": "optmid.c",
+      "url": "https://svn.code.sf.net/p/genreg/code/trunk/optmid.c?p=1",
+      "sha256": "5671e82f319d9c398e94460297c20570ab3f302b81631766b1e7b25c5048efbb"
+    },
+    {
+      "name": "readscd.c",
+      "url": "https://svn.code.sf.net/p/genreg/code/trunk/readscd.c?p=1",
+      "sha256": "01b2edb6f8a6bc6cc83c961e6082fe58efc2fe2219c08ee90e5a6ff154049631"
+    },
+    {
+      "name": "manual.eng.tex",
+      "url": "https://svn.code.sf.net/p/genreg/code/trunk/manual.eng.tex?p=1",
+      "sha256": "e75a7109328f7ee240998786f9cf38e7e592bf7c667f901bd9f1996b37c6c105"
+    },
+    {
+      "name": "nauty2_9_3.tar.gz",
+      "url": "https://users.cecs.anu.edu.au/~bdm/nauty/nauty2_9_3.tar.gz",
+      "sha256": "9fc4edae04f88a0f5883985be3b39cf7f898fd6cc96e96b9ee25452743cc1b5b"
+    }
+  ],
+  "note": "These are new downloads/builds, not recovered publication tools.",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "compiler": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "build_commands": [
+    {
+      "cwd": "genreg",
+      "argv": [
+        "make"
+      ],
+      "output_file": "build_1.txt",
+      "output_sha256": "d8a81db9434e95f95be5032a5e819e1b04e7fe756697aa5e6b9e45d9493e7fcb"
+    },
+    {
+      "cwd": "nauty2_9_3",
+      "argv": [
+        "./configure",
+        "CFLAGS=-O2"
+      ],
+      "output_file": "build_2.txt",
+      "output_sha256": "0016d6c1520dbdd56b7fe357a150337caa5f3328d3a6d04de065f4f4b43812d8"
+    },
+    {
+      "cwd": "nauty2_9_3",
+      "argv": [
+        "make",
+        "geng",
+        "labelg"
+      ],
+      "output_file": "build_3.txt",
+      "output_sha256": "9b397e5a1312fdcb9478a6f5bb195ac4e3d0f7f96ccfade4e3726cab61de48a4"
+    }
+  ],
+  "executables_sha256": {
+    "genreg": "f233f1cb932026f9cbd56232fa5a4b8685e49f82c0f73342086fc642a2225e42",
+    "geng": "1b9f9ee3c6e0cdf66ed1d664d675766e5e94c7efa3e70c909a5366e570aec912",
+    "labelg": "a955d30ea14a611a179cba0ffbb57df21d8ffbc19d5b0026bf921d31e37f3fcc"
+  }
+}

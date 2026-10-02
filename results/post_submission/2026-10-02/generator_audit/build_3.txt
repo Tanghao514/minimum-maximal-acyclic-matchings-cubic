@@ -1,0 +1,55 @@
+make: Warning: File 'makefile' has modification time 0.84 s in the future
+/bin/bash ./libtool --mode=compile gcc  -O2  -mpopcnt -march=native -c  -o gtoolsW.lo -DWORDSIZE=32 gtools.c
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c -DWORDSIZE=32 gtools.c  -fPIC -DPIC -o .libs/gtoolsW.o
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c -DWORDSIZE=32 gtools.c -o gtoolsW.o >/dev/null 2>&1
+/bin/bash ./libtool --mode=compile gcc  -O2  -mpopcnt -march=native -c  -o nautyW1.lo -DMAXN=WORDSIZE -DWORDSIZE=32 nauty.c
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c -DMAXN=WORDSIZE -DWORDSIZE=32 nauty.c  -fPIC -DPIC -o .libs/nautyW1.o
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c -DMAXN=WORDSIZE -DWORDSIZE=32 nauty.c -o nautyW1.o >/dev/null 2>&1
+/bin/bash ./libtool --mode=compile gcc  -O2  -mpopcnt -march=native -c  -o nautilW1.lo -DMAXN=WORDSIZE -DWORDSIZE=32 nautil.c
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c -DMAXN=WORDSIZE -DWORDSIZE=32 nautil.c  -fPIC -DPIC -o .libs/nautilW1.o
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c -DMAXN=WORDSIZE -DWORDSIZE=32 nautil.c -o nautilW1.o >/dev/null 2>&1
+/bin/bash ./libtool --mode=compile gcc  -O2  -mpopcnt -march=native -c  -o naugraphW1.lo -DMAXN=WORDSIZE -DWORDSIZE=32 naugraph.c
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c -DMAXN=WORDSIZE -DWORDSIZE=32 naugraph.c  -fPIC -DPIC -o .libs/naugraphW1.o
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c -DMAXN=WORDSIZE -DWORDSIZE=32 naugraph.c -o naugraphW1.o >/dev/null 2>&1
+/bin/bash ./libtool --mode=compile gcc  -O2  -mpopcnt -march=native -c  -o schreierW.lo -DWORDSIZE=32 schreier.c
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c -DWORDSIZE=32 schreier.c  -fPIC -DPIC -o .libs/schreierW.o
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c -DWORDSIZE=32 schreier.c -o schreierW.o >/dev/null 2>&1
+/bin/bash ./libtool --mode=compile gcc  -O2  -mpopcnt -march=native -c  -o naurng.lo naurng.c
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c naurng.c  -fPIC -DPIC -o .libs/naurng.o
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c naurng.c -o naurng.o >/dev/null 2>&1
+/bin/bash ./libtool --mode=link gcc  -O2  -mpopcnt -march=native   -o geng -DMAXN=WORDSIZE -DWORDSIZE=32 geng.c gtoolsW.o nautyW1.o \
+	nautilW1.o naugraphW1.o schreierW.o naurng.o
+libtool: link: gcc -O2 -mpopcnt -march=native -o geng -DMAXN=WORDSIZE -DWORDSIZE=32 geng.c gtoolsW.o nautyW1.o nautilW1.o naugraphW1.o schreierW.o naurng.o 
+/bin/bash ./libtool --mode=compile gcc  -O2  -mpopcnt -march=native -c  -o nauty.lo nauty.c
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c nauty.c  -fPIC -DPIC -o .libs/nauty.o
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c nauty.c -o nauty.o >/dev/null 2>&1
+/bin/bash ./libtool --mode=compile gcc  -O2  -mpopcnt -march=native -c  -o nautil.lo nautil.c
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c nautil.c  -fPIC -DPIC -o .libs/nautil.o
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c nautil.c -o nautil.o >/dev/null 2>&1
+/bin/bash ./libtool --mode=compile gcc  -O2  -mpopcnt -march=native -c  -o nausparse.lo nausparse.c
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c nausparse.c  -fPIC -DPIC -o .libs/nausparse.o
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c nausparse.c -o nausparse.o >/dev/null 2>&1
+/bin/bash ./libtool --mode=compile gcc  -O2  -mpopcnt -march=native -c  -o naugraph.lo naugraph.c
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c naugraph.c  -fPIC -DPIC -o .libs/naugraph.o
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c naugraph.c -o naugraph.o >/dev/null 2>&1
+/bin/bash ./libtool --mode=compile gcc  -O2  -mpopcnt -march=native -c  -o schreier.lo schreier.c
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c schreier.c  -fPIC -DPIC -o .libs/schreier.o
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c schreier.c -o schreier.o >/dev/null 2>&1
+/bin/bash ./libtool --mode=compile gcc  -O2  -mpopcnt -march=native -c  -o gtnauty.lo gtnauty.c
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c gtnauty.c  -fPIC -DPIC -o .libs/gtnauty.o
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c gtnauty.c -o gtnauty.o >/dev/null 2>&1
+/bin/bash ./libtool --mode=compile gcc  -O2  -mpopcnt -march=native -c  -o nautinv.lo nautinv.c
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c nautinv.c  -fPIC -DPIC -o .libs/nautinv.o
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c nautinv.c -o nautinv.o >/dev/null 2>&1
+/bin/bash ./libtool --mode=compile gcc  -O2  -mpopcnt -march=native -c  -o gtools.lo gtools.c
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c gtools.c  -fPIC -DPIC -o .libs/gtools.o
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c gtools.c -o gtools.o >/dev/null 2>&1
+/bin/bash ./libtool --mode=compile gcc  -O2  -mpopcnt -march=native -c  -o traces.lo traces.c
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c traces.c  -fPIC -DPIC -o .libs/traces.o
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c traces.c -o traces.o >/dev/null 2>&1
+/bin/bash ./libtool --mode=compile gcc  -O2  -mpopcnt -march=native -c  -o naututil.lo naututil.c
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c naututil.c  -fPIC -DPIC -o .libs/naututil.o
+libtool: compile:  gcc -O2 -mpopcnt -march=native -c naututil.c -o naututil.o >/dev/null 2>&1
+/bin/bash ./libtool --mode=link gcc  -O2  -mpopcnt -march=native   -o labelg labelg.c naututil.o traces.o nauty.o nautil.o nausparse.o naugraph.o schreier.o naurng.o gtnauty.o nautinv.o gtools.o
+libtool: link: gcc -O2 -mpopcnt -march=native -o labelg labelg.c naututil.o traces.o nauty.o nautil.o nausparse.o naugraph.o schreier.o naurng.o gtnauty.o nautinv.o gtools.o 
+make: warning:  Clock skew detected.  Your build may be incomplete.

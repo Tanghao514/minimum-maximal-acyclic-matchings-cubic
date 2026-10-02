@@ -1,0 +1,177 @@
+cc -D__UNIX__  -c -O genreg.c
+cc -D__UNIX__  -c -O main.c
+main.c: In function ‘generate’:
+main.c:26:13: warning: implicit declaration of function ‘default_mid_max’ [-Wimplicit-function-declaration]
+   26 |     mid_max=default_mid_max(n,k,t);
+      |             ^~~~~~~~~~~~~~~
+main.c:29:16: warning: implicit declaration of function ‘default_splitlevel’ [-Wimplicit-function-declaration]
+   29 |     splitlevel=default_splitlevel(n,k,t);
+      |                ^~~~~~~~~~~~~~~~~~
+main.c:40:2: warning: implicit declaration of function ‘ordstart’ [-Wimplicit-function-declaration]
+   40 |  ordstart(n,k,t,mid_max,
+      |  ^~~~~~~~
+main.c: At top level:
+main.c:147:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+  147 | main(argc,argv)
+      | ^~~~
+main.c: In function ‘openfiles’:
+main.c:97:35: warning: ‘%s’ directive writing 3 bytes into a region of size between 0 and 11 [-Wformat-overflow=]
+   97 |        sprintf(lst,"%d%d_%d_%d-%d.%s",n/10,n%10,k,t,jobnr,APP);
+      |                                   ^~
+In file included from /usr/include/stdio.h:980,
+                 from gendef.h:17,
+                 from main.c:1:
+In function ‘sprintf’,
+    inlined from ‘openfiles’ at main.c:97:8:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 13 and 53 bytes into a destination of size 20
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+main.c: In function ‘openfiles’:
+main.c:106:34: warning: ‘.asc’ directive writing 4 bytes into a region of size between 0 and 12 [-Wformat-overflow=]
+  106 |        sprintf(aut,"%d%d_%d_%d-%d.asc",n/10,n%10,k,t,jobnr);
+      |                                  ^~~~
+In function ‘sprintf’,
+    inlined from ‘openfiles’ at main.c:106:8:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 13 and 53 bytes into a destination of size 20
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+main.c: In function ‘movefiles’:
+main.c:132:35: warning: ‘%s’ directive writing 3 bytes into a region of size between 0 and 11 [-Wformat-overflow=]
+  132 |        sprintf(neu,"%d%d_%d_%d#%d.%s",n/10,n%10,k,t,jobnr,APP);
+      |                                   ^~
+In function ‘sprintf’,
+    inlined from ‘movefiles’ at main.c:132:8:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 13 and 53 bytes into a destination of size 20
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+main.c: In function ‘movefiles’:
+main.c:139:34: warning: ‘.asc’ directive writing 4 bytes into a region of size between 0 and 12 [-Wformat-overflow=]
+  139 |        sprintf(neu,"%d%d_%d_%d#%d.asc",n/10,n%10,k,t,jobnr);
+      |                                  ^~~~
+In function ‘sprintf’,
+    inlined from ‘movefiles’ at main.c:139:8:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 13 and 53 bytes into a destination of size 20
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+main.c: In function ‘main’:
+main.c:318:34: warning: ‘%s’ directive writing 3 bytes into a region of size between 0 and 11 [-Wformat-overflow=]
+  318 |        sprintf(lst,"%d%d_%d_%d-U.%s",n/10,n%10,k,t,APP);
+      |                                  ^~
+In function ‘sprintf’,
+    inlined from ‘main’ at main.c:318:8:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 13 and 43 bytes into a destination of size 20
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+main.c: In function ‘main’:
+main.c:327:31: warning: ‘-U.asc’ directive writing 6 bytes into a region of size between 0 and 14 [-Wformat-overflow=]
+  327 |        sprintf(aut,"%d%d_%d_%d-U.asc",n/10,n%10,k,t);
+      |                               ^~~~~~
+In function ‘sprintf’,
+    inlined from ‘main’ at main.c:327:8:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 13 and 43 bytes into a destination of size 20
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+main.c: In function ‘main’:
+main.c:335:31: warning: ‘-U.erg’ directive writing 6 bytes into a region of size between 0 and 14 [-Wformat-overflow=]
+  335 |        sprintf(erg,"%d%d_%d_%d-U.erg",n/10,n%10,k,t);
+      |                               ^~~~~~
+In function ‘sprintf’,
+    inlined from ‘main’ at main.c:335:8:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 13 and 43 bytes into a destination of size 20
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+main.c: In function ‘main’:
+main.c:356:35: warning: ‘__builtin___sprintf_chk’ may write a terminating nul past the end of the destination [-Wformat-overflow=]
+  356 |        sprintf(neu,"%d%d_%d_%d.erg",n/10,n%10,k,t);
+      |                                   ^
+In function ‘sprintf’,
+    inlined from ‘main’ at main.c:356:8:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 11 and 41 bytes into a destination of size 20
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+main.c: In function ‘main’:
+main.c:363:34: warning: ‘__builtin___sprintf_chk’ may write a terminating nul past the end of the destination [-Wformat-overflow=]
+  363 |        sprintf(neu,"%d%d_%d_%d.%s",n/10,n%10,k,t,APP);
+      |                                  ^
+In function ‘sprintf’,
+    inlined from ‘main’ at main.c:363:8:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 11 and 41 bytes into a destination of size 20
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+main.c: In function ‘main’:
+main.c:370:35: warning: ‘__builtin___sprintf_chk’ may write a terminating nul past the end of the destination [-Wformat-overflow=]
+  370 |        sprintf(neu,"%d%d_%d_%d.asc",n/10,n%10,k,t);
+      |                                   ^
+In function ‘sprintf’,
+    inlined from ‘main’ at main.c:370:8:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 11 and 41 bytes into a destination of size 20
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+main.c: In function ‘main’:
+main.c:289:34: warning: ‘.erg’ directive writing 4 bytes into a region of size between 0 and 12 [-Wformat-overflow=]
+  289 |        sprintf(erg,"%d%d_%d_%d-%d.erg",n/10,n%10,k,t,jobnr);
+      |                                  ^~~~
+In function ‘sprintf’,
+    inlined from ‘main’ at main.c:289:8:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 13 and 53 bytes into a destination of size 20
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+main.c: In function ‘main’:
+main.c:302:34: warning: ‘.erg’ directive writing 4 bytes into a region of size between 0 and 12 [-Wformat-overflow=]
+  302 |        sprintf(neu,"%d%d_%d_%d#%d.erg",n/10,n%10,k,t,jobnr);
+      |                                  ^~~~
+In function ‘sprintf’,
+    inlined from ‘main’ at main.c:302:8:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: ‘__builtin___sprintf_chk’ output between 13 and 53 bytes into a destination of size 20
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+cc -D__UNIX__  -c -O optmid.c
+cc -o genreg genreg.o main.o optmid.o 

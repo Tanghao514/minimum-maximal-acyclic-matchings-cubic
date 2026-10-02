@@ -5,6 +5,25 @@ dependencies in `requirements.txt`. The archived correctness values are exact;
 wall-clock timings depend on hardware, OS, interpreter build, background load,
 and timer noise.
 
+## New post-submission verification (2 October 2026)
+
+The original endpoint-set and GENREG records remain unavailable. A new
+standalone auditor has independently recomputed all 4,681 optima, and fresh
+GENREG/geng runs reproduce the complete graph-class collection. These are
+dated supplementary runs, with separate source and result directories.
+
+```bash
+# Check archived new witnesses, exhaustive-layer counts, mappings and hashes.
+python scripts/verify_post_submission.py
+
+# Recompute all optima independently (Python 3.11+ and g++ required).
+python scripts/run_endpoint_audit.py --output reproduced/endpoint_audit
+```
+
+The standalone audit uses no project solvers, graph library, or theorem lower
+bound. Full generator rebuild/rerun commands and methodological limits are in
+[verification/README.md](verification/README.md).
+
 ## One-command artifact verification
 
 ```bash
@@ -84,7 +103,9 @@ should agree exactly.
 - Solver A/B source and tests are present.
 - Solver B/C source, interaction audits, 64-gate correctness JSON, and all 4,681
   paired rows are present.
-- The independent endpoint-set audit and raw GENREG comparison are missing.
+- The original endpoint-set audit and raw GENREG comparison are missing.
+- New supplementary endpoint and dual-generator audits are complete; all
+  4,681 optima and graph classes agree with the preserved publication data.
 
 Command:
 
@@ -93,8 +114,9 @@ python scripts/reproduce_tables/reproduce_all.py
 ```
 
 Output: `results/tables/table6_verification_artifact_status.csv`. This is an
-availability audit, not a fabricated reproduction of missing evidence. See
-`MISSING_FOR_RELEASE.md`.
+availability audit, explicitly distinguishing missing historical records from
+the new independently reproducible runs. See `MISSING_FOR_RELEASE.md` and
+`verification/README.md`.
 
 ## Table 7 — publication environment
 
@@ -169,4 +191,3 @@ python scripts/verify_hashes.py
 
 `PUBLICATION_SHA256SUMS.txt` covers the frozen publication core.
 `SHA256SUMS.txt` covers all release files except the two manifests themselves.
-

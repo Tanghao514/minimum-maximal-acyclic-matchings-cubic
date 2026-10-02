@@ -1,8 +1,9 @@
 verification_item,availability,artifact
-Independent graph generators,MISSING,See MISSING_FOR_RELEASE.md
+Independent graph generators,ORIGINAL_MISSING_NEW_RERUN_COMPLETE,results/post_submission/2026-10-02/generator_audit/; verification/README.md
 Solver A versus Solver B,CODE_AND_TESTS,src/exact_solver.py; tests/
-Independent endpoint-set optimum audit,MISSING,See MISSING_FOR_RELEASE.md
-Lower-cardinality exclusion,PARTIAL,scripts/verify_counterexamples.py
+Independent endpoint-set optimum audit,ORIGINAL_MISSING_NEW_AUDIT_COMPLETE,verification/endpoint_audit.cpp; results/post_submission/2026-10-02/endpoint_audit/
+Lower-cardinality exclusion,NEW_AUDIT_COMPLETE,results/post_submission/2026-10-02/endpoint_audit/n*.jsonl; exhaustive layer counts for 4681 graphs
+New endpoint auditor independent gate,COMPLETE,scripts/run_endpoint_audit.py; 1114 graphs versus Python edge-subset oracle
 Solver C interaction audit,CODE,scripts/publication/audit_solver_c.py
 Solver B versus Solver C,COMPLETE,results/per_graph/full_census.csv
 Publication package test suite,COMPLETE,tests/ (12 tests)

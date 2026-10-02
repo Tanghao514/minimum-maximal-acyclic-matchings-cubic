@@ -1,0 +1,5 @@
+
+          GENREG - Generator fuer regulaere Graphen
+          16 Knoten, Grad 3, Taillenweite mind. 3
+          Erzeugung gestartet...
+          4060 Graphen erzeugt.

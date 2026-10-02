@@ -1,0 +1,2 @@
+{"index":0,"graph6":"EFz_","n":6,"mu":1,"endpoint_mask":9,"matching":[[0,3]],"layers":[{"k":0,"tested":1,"forests":1,"perfect":1},{"k":1,"tested":4,"forests":4,"perfect":1}],"seconds":1.363e-06}
+{"index":1,"graph6":"EUxo","n":6,"mu":1,"endpoint_mask":9,"matching":[[0,3]],"layers":[{"k":0,"tested":1,"forests":1,"perfect":1},{"k":1,"tested":4,"forests":4,"perfect":2}],"seconds":1.313e-06}

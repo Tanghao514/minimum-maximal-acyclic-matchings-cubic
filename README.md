@@ -18,10 +18,13 @@ proof is independent of the exhaustive computation. The computation supplies
 an exhaustive census through order 16, four counterexamples to the earlier
 quarter benchmark, independent solver comparisons, and performance evidence.
 
-> **Completeness notice.** The complete Solver B/C census and benchmark
-> artifacts are present. The separately written endpoint-set audit source and
-> the raw GENREG collection were not found in the supplied project. They have
-> not been reconstructed or fabricated; see [MISSING_FOR_RELEASE.md](MISSING_FOR_RELEASE.md).
+> **Supplementary verification, 2 October 2026.** A new standalone endpoint-set
+> auditor independently recomputed all **4,681 optima with zero discrepancies**.
+> Fresh GENREG and geng runs agree with each other and with all preserved census
+> inputs. [Methods, results, and rerun commands](verification/README.md).
+> The original endpoint-set/GENREG records are still unavailable; these new runs
+> are explicitly separate from the historical claims. See
+> [MISSING_FOR_RELEASE.md](MISSING_FOR_RELEASE.md).
 
 ## Repository contents
 
@@ -39,7 +42,11 @@ quarter benchmark, independent solver comparisons, and performance evidence.
 - `results/ablations/`: 500 rows (100 graphs × 5 variants), with all three raw
   timing repetitions and search counts.
 - `results/tables/`: machine-readable reproductions of manuscript tables.
-- `paper/`: the exact final PDF and final LaTeX source snapshot.
+- `paper/`: preserved manuscript PDF and LaTeX source; see its README for the
+  availability-statement version distinction.
+- `verification/`: the new standalone C++17 audit and its methodological guide.
+- `results/post_submission/2026-10-02/`: new per-graph audit records, raw
+  generator outputs, canonical-class bijections, environment and build records.
 - `archive/publication_snapshot/`: the supplied project layout before release
   cleanup, excluding caches and compiled Python files.
 
@@ -69,6 +76,21 @@ rerun the expensive benchmark. Its final line is:
 ```text
 RELEASE VERIFICATION PASSED
 ```
+
+Check the new archived supplementary records too:
+
+```bash
+python scripts/verify_post_submission.py
+```
+
+To recompute the optima independently, with a C++17 compiler available:
+
+```bash
+python scripts/run_endpoint_audit.py --output reproduced/endpoint_audit
+```
+
+The archived-record check and a fresh full-census endpoint audit also run in
+GitHub Actions. Neither modifies the paper or publication results.
 
 Conda users may instead run:
 
@@ -133,11 +155,16 @@ workflows even when the multisets of isomorphism classes are identical.
 ## Independent endpoint-set audit
 
 The final manuscript reports an independent endpoint-set audit, with a
-separate graph6 decoder and no calls to Solvers A/B. Its source and raw audit
-outputs were not present in the supplied package. Consequently this repository
-does not offer a fake replacement command. The exact missing items and the
-manuscript-reported protocol are recorded in
-[MISSING_FOR_RELEASE.md](MISSING_FOR_RELEASE.md).
+separate graph6 decoder and no calls to Solvers A/B. Those original source and
+raw output files were not present in the supplied package and remain missing.
+
+The new October 2026 auditor is provided as additional evidence. It exhausts
+endpoint sets from cardinality zero, using its own parsing, induced-forest,
+perfect-matching, and maximality routines. It neither imports Solvers A/B/C nor
+uses the proved lower bound. Every one of the 4,681 optima agrees with the
+publication; all lower-cardinality counts and matching witnesses are preserved.
+Its independent small-graph gate checks 1,114 graphs. See
+[verification/README.md](verification/README.md) for limits and full commands.
 
 ## Reproduce tables
 
@@ -147,8 +174,8 @@ python scripts/verify_paper_numbers.py
 ```
 
 The first command writes Tables 1--8 as CSV files under `results/tables/`.
-For Table 6, it produces an artifact-availability matrix so unavailable
-independent evidence cannot be mistaken for a reproduced result. The second
+For Table 6, it produces an artifact-availability matrix distinguishing missing
+historical records from the newly completed supplementary audits. The second
 command checks all census counts, histograms, benchmark medians and candidates,
 equality statuses, ablation ratios/counts, source hashes, census hashes, and
 the final PDF hash. Any failure creates `RESULT_MISMATCH_REPORT.md`.
@@ -190,11 +217,13 @@ take substantially longer because Solver B times out at orders 46 and 56.
 
 ## External software
 
-The census was generated with nauty 2.9.3 `geng`; the manuscript additionally
-reports a GENREG census canonicalized with nauty `labelg`. These tools are
-third-party software and are not redistributed here. Installation sources,
-commands, and the boundary between preserved and unavailable artifacts are in
-[docs/external_tools.md](docs/external_tools.md).
+The publication census was generated with nauty 2.9.3 `geng`; the manuscript
+additionally reports a GENREG census canonicalized with nauty `labelg`.
+The new supplement reruns both generators and compares their canonical
+multisets with the preserved inputs, with complete raw output and row mappings.
+Third-party source and binaries are not redistributed here. Hash-pinned build
+commands and provenance are in [docs/external_tools.md](docs/external_tools.md)
+and [verification/README.md](verification/README.md).
 
 ## Data and reproducibility
 
@@ -208,7 +237,7 @@ and 16 logical cores; 15.74 GiB RAM; CPython 3.11.7; NetworkX 3.1; nauty 2.9.3;
 single-threaded solver calls; benchmark date 19 August 2026.
 
 `PUBLICATION_SHA256SUMS.txt` identifies the frozen paper/code/data core.
-`SHA256SUMS.txt` covers the release-cleanup repository contents. Verify both:
+`SHA256SUMS.txt` covers the current repository contents, including the supplement. Verify both:
 
 ```bash
 python scripts/verify_hashes.py
@@ -216,7 +245,9 @@ python scripts/verify_hashes.py
 
 Publication snapshot commit:
 `e48b90d21fc9dc28d94bc0e2410fe220bba6feda`. The release is also marked by
-the `jco-submission-v1` tag. No paper or repository DOI is claimed.
+the `jco-submission-v1` tag. The pre-supplement state is also preserved as
+`pre-verification-2026-10-02`. The original publication manifest is unchanged.
+No paper or repository DOI is claimed.
 
 ## Citation
 
@@ -226,7 +257,7 @@ used. Do not invent a DOI.
 
 ## License
 
-- Python code, scripts, and tests: MIT, see [LICENSE](LICENSE).
+- Python/C++ code, scripts, and tests: MIT, see [LICENSE](LICENSE).
 - Author-created datasets, certificates, result tables, and repository
   documentation: CC BY 4.0, see [LICENSE-DATA](LICENSE-DATA).
 - Manuscript PDF and LaTeX source: retained rights and future publisher terms,

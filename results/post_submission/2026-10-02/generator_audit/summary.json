@@ -1,0 +1,347 @@
+{
+  "kind": "new_post_submission_verification",
+  "status": "pass",
+  "started_utc": "2026-10-02T14:18:52.679104+00:00",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "runner_sha256": "adefecdfe37c801b02c4b71db7f3133374fa13d88c5ffc86ecdaaabec40bb549",
+  "toolchain_manifest_sha256": "9df9d68d88bbf492b57fa2787f4c40dfa7a4e13d3b3312b978fac4540ca40096",
+  "executables_sha256": {
+    "genreg": "f233f1cb932026f9cbd56232fa5a4b8685e49f82c0f73342086fc642a2225e42",
+    "geng": "1b9f9ee3c6e0cdf66ed1d664d675766e5e94c7efa3e70c909a5366e570aec912",
+    "labelg": "a955d30ea14a611a179cba0ffbb57df21d8ffbc19d5b0026bf921d31e37f3fcc"
+  },
+  "canonicalizer_shared_between_generators": true,
+  "orders": [
+    {
+      "n": 4,
+      "graphs": 1,
+      "all_three_canonical_multisets_equal": true,
+      "duplicates": 0,
+      "genreg_seconds": 0.02223335799999404,
+      "geng_seconds": 0.01995859699999869,
+      "publication_input_sha256": "62073900de6d9451c02333f80b3c4de1105edb4559989fee6cfa91c1365d102b",
+      "commands": [
+        [
+          "genreg",
+          "4",
+          "3",
+          "-a",
+          "stdout"
+        ],
+        [
+          "geng",
+          "-c",
+          "-q",
+          "-d3",
+          "-D3",
+          "4",
+          "6"
+        ],
+        [
+          "labelg",
+          "-q",
+          "-g",
+          "<each of the three inputs>"
+        ]
+      ],
+      "artifacts_sha256": {
+        "n4.bijection.csv": "20287d83f97f9bacf5b36d73a846c437e9ac7771d4b46b12291cefb79e5dbe71",
+        "n4.geng.canonical.g6": "62073900de6d9451c02333f80b3c4de1105edb4559989fee6cfa91c1365d102b",
+        "n4.geng.g6": "62073900de6d9451c02333f80b3c4de1105edb4559989fee6cfa91c1365d102b",
+        "n4.geng.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n4.geng.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n4.genreg.asc": "b88402d708d25402820f1f39f9b270e440183baba75358826d8f97c3da532ca6",
+        "n4.genreg.canonical.g6": "62073900de6d9451c02333f80b3c4de1105edb4559989fee6cfa91c1365d102b",
+        "n4.genreg.g6": "62073900de6d9451c02333f80b3c4de1105edb4559989fee6cfa91c1365d102b",
+        "n4.genreg.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n4.genreg.stderr.txt": "fc5c59e305a6816a6c526f381b3012407d28aa4233953a3925054dd3f1f7a033",
+        "n4.publication.canonical.g6": "62073900de6d9451c02333f80b3c4de1105edb4559989fee6cfa91c1365d102b",
+        "n4.publication.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "n": 6,
+      "graphs": 2,
+      "all_three_canonical_multisets_equal": true,
+      "duplicates": 0,
+      "genreg_seconds": 0.020151472999998532,
+      "geng_seconds": 0.0203431470000055,
+      "publication_input_sha256": "b0aeb28fe754b6ae6ce6b0e1ea4feecea20314cc62a9796789954b4fd09e40ab",
+      "commands": [
+        [
+          "genreg",
+          "6",
+          "3",
+          "-a",
+          "stdout"
+        ],
+        [
+          "geng",
+          "-c",
+          "-q",
+          "-d3",
+          "-D3",
+          "6",
+          "9"
+        ],
+        [
+          "labelg",
+          "-q",
+          "-g",
+          "<each of the three inputs>"
+        ]
+      ],
+      "artifacts_sha256": {
+        "n6.bijection.csv": "fb08ceebea0d5dcfd3cffb0a2611157cf75b94dce37c1e48e7a53630345a6d4b",
+        "n6.geng.canonical.g6": "ba21a6e2d7d66e9a1f87dc625de77b1a40a624c9d4c7ea323c225d028d0b038a",
+        "n6.geng.g6": "b0aeb28fe754b6ae6ce6b0e1ea4feecea20314cc62a9796789954b4fd09e40ab",
+        "n6.geng.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n6.geng.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n6.genreg.asc": "9fbc923ee5baf9ab298cb0a0eb069b73451bfbb4a364a93edf7658693846cbf1",
+        "n6.genreg.canonical.g6": "49a7391d96ad84fd13c8b5267ef23c215085ed317e6146e479df2bcdfd672949",
+        "n6.genreg.g6": "49a7391d96ad84fd13c8b5267ef23c215085ed317e6146e479df2bcdfd672949",
+        "n6.genreg.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n6.genreg.stderr.txt": "fcc93f27a254dbd346e76a576d803cab367725306360a35370620f21ed36fdae",
+        "n6.publication.canonical.g6": "ba21a6e2d7d66e9a1f87dc625de77b1a40a624c9d4c7ea323c225d028d0b038a",
+        "n6.publication.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "n": 8,
+      "graphs": 5,
+      "all_three_canonical_multisets_equal": true,
+      "duplicates": 0,
+      "genreg_seconds": 0.020591453999998066,
+      "geng_seconds": 0.019288810999995576,
+      "publication_input_sha256": "545cfd83233b4bd966ef0c483ddc8bec4099dcf451cf9d2e2013e46c0e641262",
+      "commands": [
+        [
+          "genreg",
+          "8",
+          "3",
+          "-a",
+          "stdout"
+        ],
+        [
+          "geng",
+          "-c",
+          "-q",
+          "-d3",
+          "-D3",
+          "8",
+          "12"
+        ],
+        [
+          "labelg",
+          "-q",
+          "-g",
+          "<each of the three inputs>"
+        ]
+      ],
+      "artifacts_sha256": {
+        "n8.bijection.csv": "187d2e72575387facb327461259b78ef2ecd5c0df05f439dc480ee990f0fb2d6",
+        "n8.geng.canonical.g6": "8e99bbe0d82a1c4aa946adea55cf3b13b9ed4aaf264931ae1ffb0adcca151066",
+        "n8.geng.g6": "545cfd83233b4bd966ef0c483ddc8bec4099dcf451cf9d2e2013e46c0e641262",
+        "n8.geng.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n8.geng.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n8.genreg.asc": "68ca08f5609b5ad2eeeb2f0b34f3392142f535be5828f63e6a2ce9d7dd03308e",
+        "n8.genreg.canonical.g6": "0e346aabdf3e589b29424f7b0953fc29d4de28cdcfe8d80f663a6ec66ee7fa78",
+        "n8.genreg.g6": "6946d13a0aec85386d47d087ad2a9f2561b05d8580f0ec937414f8d31359d34f",
+        "n8.genreg.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n8.genreg.stderr.txt": "dbb98bdde354bbcdf89dd27f7536c5fb0216c607d95134653fd8660fa76a0f67",
+        "n8.publication.canonical.g6": "8e99bbe0d82a1c4aa946adea55cf3b13b9ed4aaf264931ae1ffb0adcca151066",
+        "n8.publication.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "n": 10,
+      "graphs": 19,
+      "all_three_canonical_multisets_equal": true,
+      "duplicates": 0,
+      "genreg_seconds": 0.016304275999999618,
+      "geng_seconds": 0.019730468000005885,
+      "publication_input_sha256": "716d2bf7bcd625dd472992fe1f058473a69ad8bb9ccfd4036156a0a316a1feb3",
+      "commands": [
+        [
+          "genreg",
+          "10",
+          "3",
+          "-a",
+          "stdout"
+        ],
+        [
+          "geng",
+          "-c",
+          "-q",
+          "-d3",
+          "-D3",
+          "10",
+          "15"
+        ],
+        [
+          "labelg",
+          "-q",
+          "-g",
+          "<each of the three inputs>"
+        ]
+      ],
+      "artifacts_sha256": {
+        "n10.bijection.csv": "540f0daa8d9e449e2162997fe3dc8d40101299f8c601993f4ab8f1136df058c2",
+        "n10.geng.canonical.g6": "90b5fc4c0d570031df68c7473358874923ad3772f92ce9e5d79bbb14b961eb31",
+        "n10.geng.g6": "716d2bf7bcd625dd472992fe1f058473a69ad8bb9ccfd4036156a0a316a1feb3",
+        "n10.geng.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n10.geng.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n10.genreg.asc": "d44d3b3b9d5c857ded547a11f314561ea601b57df0ec54eff30e041663ea901e",
+        "n10.genreg.canonical.g6": "06aeed1be33d7e9e478c7cb7fbea6c0c954a5b36dbac353fd2da2f7a2803774e",
+        "n10.genreg.g6": "0c3182bcbbfdc38fc7b84f3a1ac510834c3064524db00afeac212a3292f17c7b",
+        "n10.genreg.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n10.genreg.stderr.txt": "a1948f069c0bf5804b5b30f9ba70b7e4712a3db679c89a60aba8864506c4dbb5",
+        "n10.publication.canonical.g6": "90b5fc4c0d570031df68c7473358874923ad3772f92ce9e5d79bbb14b961eb31",
+        "n10.publication.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "n": 12,
+      "graphs": 85,
+      "all_three_canonical_multisets_equal": true,
+      "duplicates": 0,
+      "genreg_seconds": 0.018552369000019553,
+      "geng_seconds": 0.024744842999979255,
+      "publication_input_sha256": "3659b3cf39481c40f8bfb2515f978eaa46b770c71f9500d31197436878155b27",
+      "commands": [
+        [
+          "genreg",
+          "12",
+          "3",
+          "-a",
+          "stdout"
+        ],
+        [
+          "geng",
+          "-c",
+          "-q",
+          "-d3",
+          "-D3",
+          "12",
+          "18"
+        ],
+        [
+          "labelg",
+          "-q",
+          "-g",
+          "<each of the three inputs>"
+        ]
+      ],
+      "artifacts_sha256": {
+        "n12.bijection.csv": "12080352d318270eda874151231d246cf2760f254fa500c377abfca0c7395944",
+        "n12.geng.canonical.g6": "ab1707a4c7b004582b444351104013d593ad037c6c4f4c6831dc97aeaa5d94bd",
+        "n12.geng.g6": "3659b3cf39481c40f8bfb2515f978eaa46b770c71f9500d31197436878155b27",
+        "n12.geng.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n12.geng.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n12.genreg.asc": "f32e0b0a0dcaeee8b67fcd1896a261330abecd22bab3a4144463f9011732cac7",
+        "n12.genreg.canonical.g6": "45331da0232decf221fc8aa52aefc44238eabbafa75fea6ecaed38ad002232d3",
+        "n12.genreg.g6": "21bab16fbf7db826928315b9ca1d64684c0b1f7014b02fab0c6f2fb2f247104b",
+        "n12.genreg.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n12.genreg.stderr.txt": "d1102d6f1ca0028f075ccee02bc6f4e8ab1fdbf0d9e8a5a1ad995fa2163ac04d",
+        "n12.publication.canonical.g6": "ab1707a4c7b004582b444351104013d593ad037c6c4f4c6831dc97aeaa5d94bd",
+        "n12.publication.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "n": 14,
+      "graphs": 509,
+      "all_three_canonical_multisets_equal": true,
+      "duplicates": 0,
+      "genreg_seconds": 0.030273623999988786,
+      "geng_seconds": 0.0704021770000054,
+      "publication_input_sha256": "efac61759784a8a73305b746838dc0db6c41c4812644b738f90356398fabffd4",
+      "commands": [
+        [
+          "genreg",
+          "14",
+          "3",
+          "-a",
+          "stdout"
+        ],
+        [
+          "geng",
+          "-c",
+          "-q",
+          "-d3",
+          "-D3",
+          "14",
+          "21"
+        ],
+        [
+          "labelg",
+          "-q",
+          "-g",
+          "<each of the three inputs>"
+        ]
+      ],
+      "artifacts_sha256": {
+        "n14.bijection.csv": "32490f1c635ca586e36131997351e4888052d4ea4dd35e45a0b073bf2770a7ec",
+        "n14.geng.canonical.g6": "c0a97be1aa900640a651ce7fd68e9dc81d0465c3f910ee50ac1ecba5b03c4cd3",
+        "n14.geng.g6": "efac61759784a8a73305b746838dc0db6c41c4812644b738f90356398fabffd4",
+        "n14.geng.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n14.geng.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n14.genreg.asc": "729026df8e7ef85cae5945d739d0e0726f51c9de226eb68885dac4cea7ff6fb8",
+        "n14.genreg.canonical.g6": "2e9649a44de97bf064c3ee840ed5dddcd4da75b81e2b12574aea58dd5d3c4fd5",
+        "n14.genreg.g6": "6657f77868567a7e604a2325b5d748e5a04848b4ab75310ffa3ba695d26c66fe",
+        "n14.genreg.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n14.genreg.stderr.txt": "3409a3b620ff7545c5e397a2be94dd5a26d16eecd09b93a324db13990b2f5c02",
+        "n14.publication.canonical.g6": "c0a97be1aa900640a651ce7fd68e9dc81d0465c3f910ee50ac1ecba5b03c4cd3",
+        "n14.publication.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "n": 16,
+      "graphs": 4060,
+      "all_three_canonical_multisets_equal": true,
+      "duplicates": 0,
+      "genreg_seconds": 0.13095301600000653,
+      "geng_seconds": 0.6727274360000024,
+      "publication_input_sha256": "b3610f3eab739083ece9fc9c5d896708de5345b8b22104e13425bfcb88b9df5e",
+      "commands": [
+        [
+          "genreg",
+          "16",
+          "3",
+          "-a",
+          "stdout"
+        ],
+        [
+          "geng",
+          "-c",
+          "-q",
+          "-d3",
+          "-D3",
+          "16",
+          "24"
+        ],
+        [
+          "labelg",
+          "-q",
+          "-g",
+          "<each of the three inputs>"
+        ]
+      ],
+      "artifacts_sha256": {
+        "n16.bijection.csv": "e6a9e0f30b4abc07f19dee8c531e50b17ef326b1bcfd326908c17986b4e18f63",
+        "n16.geng.canonical.g6": "6b8bbbe66a6f8c110f3f289194b1c097e7f92c2a27cef5a9b4f73d4110956ea3",
+        "n16.geng.g6": "b3610f3eab739083ece9fc9c5d896708de5345b8b22104e13425bfcb88b9df5e",
+        "n16.geng.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n16.geng.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n16.genreg.asc": "31780d9d9cf2411dd65066e524388d5f2da40a55d2264ca600f4ebfc2656fa48",
+        "n16.genreg.canonical.g6": "7bbd56737f0c684c14bc01422e51e4eb4266d51f18eb0b4077e45b16395c0f44",
+        "n16.genreg.g6": "26364c59882552ff5d35d41525aa8847ed10affed6eb5d05e94cbd0831644835",
+        "n16.genreg.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "n16.genreg.stderr.txt": "9c6c05829cd10a13f4a632444ea846f7f9bdf174354163ac65525070d4185510",
+        "n16.publication.canonical.g6": "6b8bbbe66a6f8c110f3f289194b1c097e7f92c2a27cef5a9b4f73d4110956ea3",
+        "n16.publication.labelg.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "finished_utc": "2026-10-02T14:18:56.007168+00:00"
+}

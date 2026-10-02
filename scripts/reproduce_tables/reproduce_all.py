@@ -127,10 +127,11 @@ def table_5(output: Path) -> None:
 
 def table_6(output: Path) -> None:
     rows = [
-        {"verification_item": "Independent graph generators", "availability": "MISSING", "artifact": "See MISSING_FOR_RELEASE.md"},
+        {"verification_item": "Independent graph generators", "availability": "ORIGINAL_MISSING_NEW_RERUN_COMPLETE", "artifact": "results/post_submission/2026-10-02/generator_audit/; verification/README.md"},
         {"verification_item": "Solver A versus Solver B", "availability": "CODE_AND_TESTS", "artifact": "src/exact_solver.py; tests/"},
-        {"verification_item": "Independent endpoint-set optimum audit", "availability": "MISSING", "artifact": "See MISSING_FOR_RELEASE.md"},
-        {"verification_item": "Lower-cardinality exclusion", "availability": "PARTIAL", "artifact": "scripts/verify_counterexamples.py"},
+        {"verification_item": "Independent endpoint-set optimum audit", "availability": "ORIGINAL_MISSING_NEW_AUDIT_COMPLETE", "artifact": "verification/endpoint_audit.cpp; results/post_submission/2026-10-02/endpoint_audit/"},
+        {"verification_item": "Lower-cardinality exclusion", "availability": "NEW_AUDIT_COMPLETE", "artifact": "results/post_submission/2026-10-02/endpoint_audit/n*.jsonl; exhaustive layer counts for 4681 graphs"},
+        {"verification_item": "New endpoint auditor independent gate", "availability": "COMPLETE", "artifact": "scripts/run_endpoint_audit.py; 1114 graphs versus Python edge-subset oracle"},
         {"verification_item": "Solver C interaction audit", "availability": "CODE", "artifact": "scripts/publication/audit_solver_c.py"},
         {"verification_item": "Solver B versus Solver C", "availability": "COMPLETE", "artifact": "results/per_graph/full_census.csv"},
         {"verification_item": "Publication package test suite", "availability": "COMPLETE", "artifact": "tests/ (12 tests)"},
@@ -188,4 +189,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
